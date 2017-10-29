@@ -17,6 +17,7 @@
  * make the core part
  * get user id and IM id to send DM
   * user.list & im.list methots
+ * open slack app when slacker is called with -o option or sonething like that.
  * automatically get a token   -> someday
 
 #problems I have
