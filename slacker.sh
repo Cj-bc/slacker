@@ -8,6 +8,6 @@ source ./func/settingfunc.sh
 if [ $1 -eq "init" ] || [ -f .basicconf ] && [ $# -ne 0 ]
 then
  echo "you need to setup your slacker first."
- setting first      #this is in settingfunc.sh file.
+ setup first      #this is in settingfunc.sh file.
 fi 
  
