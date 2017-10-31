@@ -6,9 +6,10 @@
 # source textfiles,functions
 Version=0.0.1
 source ./func/settingfunc.sh
+source ./func/sendfunc.sh
 source ./texts/CommonTexts.sh
 
-#test wheather initialization is in need
+# test wheather initialization is in need
 if [ $1 -eq "init" ] || [ -f .basicconf ] && [ $# -ne 0 ]
 then
  echo "you need to setup your slacker first."
