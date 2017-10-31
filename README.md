@@ -19,6 +19,9 @@
  * settingfunc.setting_channel()
  * settingfunc.setting_user()
  * sendfunc.send()
+  * curl option to get http status code
+ * AnalyzeId.GetChannelId()
+ * AnalyzeId.GetUserId()
 
 # ToDos  
  * make the core part
@@ -26,7 +29,7 @@
   * user.list & im.list methots
  * open slack app when slacker is called with -o option or sonething like that.
  * automatically get a token   -> someday
-
+ * Get http status code
 # problems I have  
  * What's the best grammer ??
   ```shellscript:examples I'm thinking

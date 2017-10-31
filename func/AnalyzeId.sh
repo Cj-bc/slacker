@@ -1,0 +1,12 @@
+
+
+function GetChannelId {
+
+
+}
+
+
+function GetUserId {
+
+
+}
