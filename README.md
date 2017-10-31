@@ -13,13 +13,18 @@
   * *Japanese*
  will be supported
 
+# in_prgress
+ * slacker.sh
+ * settingfunc.setup()
+ * settingfunc.setting_channel()
+ * settingfunc.setting_user()
+
+
 # ToDos  
  * make the core part
  * get user id and IM id to send DM
   * user.list & im.list methots
  * open slack app when slacker is called with -o option or sonething like that.
- * add settingfunc.setting_channel()
- * add settingfunc.setting_user()
  * add send.sh
  * automatically get a token   -> someday
 
