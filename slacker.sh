@@ -5,7 +5,7 @@
 # version 0.0.1
 Version=0.0.1
 source ./func/settingfunc.sh
-source ./texts/common Texts.sh
+source ./texts/CommonTexts.sh
 
 #test wheather initialization is in need
 if [ $1 -eq "init" ] || [ -f .basicconf ] && [ $# -ne 0 ]
