@@ -13,6 +13,13 @@
   * *Japanese*
  will be supported
 
+# Needed permitions
+ * channels:read
+ * channels:write
+ * im:write
+ * users:read
+ * users:write
+
 # in_prgress
  * slacker.sh
  * settingfunc.setup()
