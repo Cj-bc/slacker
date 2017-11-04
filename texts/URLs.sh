@@ -1,12 +1,16 @@
-#
-# Here're all URLs used in slacker
-#
-
-
-
-#
-# AnalyzeId.sh
+# Here're all URLs and paths used in slacker
 #
 
 
-UserListURL=https://slack.com/api/users.list"
+#
+# For settingfunc.sh
+# 
+URL_GetToken="https://slack.com/api/"
+GuideToGetToken="./texts/guides/GetToken.txt"
+
+
+
+#
+# For AnalyzeId.sh
+#
+UserListURL="https://slack.com/api/users.list"
