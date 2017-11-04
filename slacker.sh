@@ -5,9 +5,16 @@
 
 # source textfiles,functions
 Version=0.0.1
+source ./func/AnalyzeId.sh
 source ./func/settingfunc.sh
 source ./func/sendfunc.sh
 source ./texts/CommonTexts.sh
+source ./texts/Error_Code.sh
+source ./texts/FunctionsTexts.sh
+source ./texts/URLs.sh
+source ./texts/Guides/GetToken.txt
+source ./texts/Templates/.slackerconf
+source .basicconf
 
 # test wheather initialization is in need
 if [ $1 -eq "init" ] || [ -f .basicconf ] && [ $# -ne 0 ]
@@ -24,12 +31,14 @@ then
  exit 0
 fi
 
+#
 # test all arg and call function
 # Functions are here:
 # settingfunc.sh --- setting
 #                 |- setting_channel
 #                 |- setting_user
 # sendfunc.sh --- send
+#
 
 case "$1" in
  "set" ) shift;setting "$＊" ;;
