@@ -29,6 +29,7 @@
   * curl option to get http status code
  * AnalyzeId.GetChannelId()
  * AnalyzeId.GetUserId()
+ * texts/Error_Codes.sh
 
 # ToDos  
  * make the core part
@@ -37,6 +38,8 @@
  * open slack app when slacker is called with -o option or sonething like that.
  * automatically get a token   -> someday
  * Get http status code
+ * Deside Error codes
+
 # problems I have  
  * What's the best grammer ??
   ```shellscript:examples I'm thinking
