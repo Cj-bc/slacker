@@ -5,15 +5,8 @@
 
 # source textfiles,functions
 Version=0.0.1
-source ./func/AnalyzeId.sh
-source ./func/settingfunc.sh
-source ./func/sendfunc.sh
-source ./texts/CommonTexts.sh
-source ./texts/Error_Code.sh
-source ./texts/FunctionsTexts.sh
-source ./texts/URLs.sh
-source ./texts/Guides/GetToken.txt
-source ./texts/Templates/.slackerconf
+source ./func/*
+source ./texts/*
 source .basicconf
 
 # test wheather initialization is in need
