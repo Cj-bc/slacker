@@ -27,8 +27,8 @@
  * settingfunc.setting_user()
  * sendfunc.send()
   * curl option to get http status code
- * AnalyzeId.GetChannelId()
-~~ * AnalyzeId.GetUserId()~~
+ * AnalyzeId.GetChannelId()  
+ * ~~AnalyzeId.GetUserId()~~
  * texts/Error_Codes.sh
 
 # ToDos  
