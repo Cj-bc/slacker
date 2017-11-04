@@ -3,6 +3,7 @@
 # making
 ##############
 
+source .basicconf
 
 
 function GetChannelId {
@@ -26,9 +27,9 @@ function GetUserId {
 # 3.Return the UserId
 #
 
-# 1.
+# 1. -o option
  curl -d "token=${Token}" -o .data "https://slack.com/api/users.list"
 # 2.
- grep 
+ 
 
 }
