@@ -6,10 +6,16 @@
 
 function send {
 
-# if channel or user is required,set them
+#
+# Set Id which slacker send messages to
+# If username or channelname was passed,Get Id related to 
+# If nothing was passed,Get selected Id in settingconf
+#
+
  case $1 in
-  \#* ) setting_channel $1; shift
-  @* ) setting_user $1; setting_channel ${UserId}; shift
+  \#* ) SendToId=`GetChannelId ${$1:1}` ; shift
+  @* ) SendToId=`GetImId `GetUserId ${$1:1}``;shift
+  * ) SendToId=$ChannelId
  esac
 
 # now, message should be in $1 because of shift command.
