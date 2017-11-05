@@ -1,14 +1,15 @@
 
 # we'll get user and channel ID using this.
-source ./func/AnalyzeId.sh
-source ./.slackerconf
+# needed files
+#     ./func/AnalyzeId.sh
+#     ./.slackerconf
 
 function send {
 
 # if channel or user is required,set them
  case $1 in
-  \#* ) ChannelId=`GetChannelId $1`; shift
-  @* ) UserId=`GetUserId $1`; ChannelId=`GetChannelId ${UserId}`; shift
+  \#* ) setting_channel $1; shift
+  @* ) setting_user $1; setting_channel ${UserId}; shift
  esac
 
 # now, message should be in $1 because of shift command.
