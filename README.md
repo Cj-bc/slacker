@@ -48,3 +48,4 @@
        slacker <messages>
   ```
  * how about alias ??
+ * which is better to change user(or channel) selection or not when sendfunc.send() is called with arguments.
