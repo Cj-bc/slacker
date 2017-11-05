@@ -15,9 +15,11 @@ function setup {
 }
 
 function setting_channel {
- channel=$1
+ ChannelName=$1
+ ChannelId=`GetChannelId $ChannelName`
 }
 
 function setting_user {
- user=$1
+ UserName=$1
+ UserId=`GetUserId $UserName`
 }
