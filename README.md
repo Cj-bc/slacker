@@ -30,6 +30,7 @@
  * AnalyzeId.GetChannelId()  
  * ~~AnalyzeId.GetUserId()~~
  * texts/Error_Codes.sh
+ * AnalyzeId.GetImId()
 
 # ToDos  
  * make the core part
@@ -39,6 +40,7 @@
  * automatically get a token   -> someday
  * Get http status code
  * Deside Error codes
+ * Use camelcase
 
 # problems I have  
  * What's the best grammer ??
@@ -49,3 +51,11 @@
   ```
  * how about alias ??
  * which is better to change user(or channel) selection or not when sendfunc.send() is called with arguments.
+
+# Questions
+ * Can i write ${$1:1} ?
+    -- on sendfunc.send()
+ * Can i nest `` like
+  ``` shellscript:example nest
+        command ` command ` command arg ``
+  ```
