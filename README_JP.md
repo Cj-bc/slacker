@@ -10,8 +10,8 @@
  私の所属する、Y-modifyのブログにて記載していく予定です！作成過程でつまずいた点、新しく知った点などをまとめるつもりなのでよければ見てください。
  <http://blog.y-modify.org>
 閲覧可能な言語は以下の通りです
- *English
- *日本語
+ * English
+ * 日本語
 
 #必要なslack web API パーミッション
  * channels:read
