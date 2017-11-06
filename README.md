@@ -34,14 +34,15 @@
 
 # ToDos  
  * make the core part
- * get user id and IM id to send DM
-  * user.list & im.list methots
+  * ~~get user id and IM id to send DM~~
+   * ~~user.list & im.list methots~~
+  * automatically get a token   -> someday
+  * Get http status code
+  * Deside Error codes
+  * Use camelcase
+  * Need to know how to output errormessage directly to basic output(= commandline)
  * open slack app when slacker is called with -o option or sonething like that.
- * automatically get a token   -> someday
- * Get http status code
- * Deside Error codes
- * Use camelcase
- * Need to know how to output errormessage directly to basic output(= commandline)
+ * Japanese support
 
 # problems I have  
  * What's the best grammer ??
