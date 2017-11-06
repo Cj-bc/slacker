@@ -30,7 +30,7 @@
  * AnalyzeId.GetChannelId()  
  * ~~AnalyzeId.GetUserId()~~
  * texts/Error_Codes.sh
- * AnalyzeId.GetImId()
+ * AnalyzeId.GetImId() -- almost finished
 
 # ToDos  
  * make the core part
@@ -41,6 +41,7 @@
  * Get http status code
  * Deside Error codes
  * Use camelcase
+ * Need to know how to output errormessage directly to basic output(= commandline)
 
 # problems I have  
  * What's the best grammer ??
