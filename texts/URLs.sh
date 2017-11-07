@@ -14,5 +14,5 @@ GuideToGetToken="./texts/guides/GetToken.txt"
 # For AnalyzeId.sh
 #
 UserListURL="https://slack.com/api/users.list"
-InListURL= "https://slack.com/api/im.list"
-ImOpenURL="https://slack.com/api/im.open" #no use
+ImListURL= "https://slack.com/api/im.list"
+ImOpenURL="https://slack.com/api/im.open"

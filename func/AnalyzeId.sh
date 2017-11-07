@@ -59,6 +59,8 @@ function GetUserId {
 }
 
 
+
+
 #
 # GetImId is almost the same as GetUserId
 #
