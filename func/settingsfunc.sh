@@ -1,4 +1,13 @@
-#!/bin/bash
+#
+# slacker
+#
+# copyright (c) 2017Cj_bc
+# 
+# This software is released under MIT License.
+# http://opensource.org/license/mit-license.php
+#
+
+
 # Functions here are made for systemcall,not for usercall
 
 source texts/FunctionsTexts.sh   #All texts are in here.

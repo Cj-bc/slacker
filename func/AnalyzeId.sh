@@ -1,3 +1,12 @@
+#
+# slacker
+#
+# copyright (c) 2017Cj_bc
+# 
+# This software is released under MIT License.
+# http://opensource.org/license/mit-license.php
+#
+
 
 ##############
 # making

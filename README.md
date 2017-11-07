@@ -22,6 +22,9 @@
  * users:read
  * users:write
 
+# LICENSE
+ This software is released under MIT License,see `LICENSE`
+
 # in_prgress
  * slacker.sh
  * settingfunc.setup()

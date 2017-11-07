@@ -1,6 +1,11 @@
 #!bin/bash
-# Written by Cj in y-modify
+#
+# slacker
+#
+# copyright (c) 2017Cj_bc
 # 
+# This software is released under MIT License.
+# http://opensource.org/license/mit-license.php
 # version 0.0.1
 
 # source textfiles,functions
