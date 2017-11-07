@@ -1,10 +1,10 @@
 # slacker  
- A commandline based Slack tool.(Just to send messages)
- slacker allows you to send messeges without being away from terminal.
+ A commandline based Slack tool.(Just to send messages)  
+ slacker allows you to send messeges without being away from terminal.  
  slacker just send messages.Not get any messages.
  
 # feature  
- * you don't have to use your mouse or trackpad to select slack app!
+ * you're now free from your mouse and trackpad to use slack app!
  * Notifications? Please get them from your slack app ;)
 
 # infomations of making  
