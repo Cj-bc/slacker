@@ -1,3 +1,5 @@
+日本語版はこちら : <https://github.com/Cj-bc/slacker/blob/master/README_JP.md>
+
 # slacker  
  A commandline based Slack tool.(Just to send messages)  
  slacker allows you to send messeges without being away from terminal.  
@@ -10,7 +12,7 @@
 # infomations of making  
  I'll write blog about making slacker on <http://blog.y-modify.org>
   * *English*
-  * *Japanese*
+  * *Japanese*  
  will be supported
 
 # Needed permitions
