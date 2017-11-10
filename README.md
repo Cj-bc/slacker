@@ -28,8 +28,8 @@
 # in_prgress
  * slacker.sh
  * settingfunc.setup()
- * settingfunc.setting_channel()
- * settingfunc.setting_user()
+ * ~~settingfunc.setting_channel()~~
+ * ~~settingfunc.setting_user()~~
  * sendfunc.send()
   * curl option to get http status code
  * AnalyzeId.GetChannelId()  

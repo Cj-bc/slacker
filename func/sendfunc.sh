@@ -45,7 +45,7 @@ Message=$1
 
 
 
-curl -XPOST -d "token=${Token}" -d "channel=${channel}" -d "text=${Message}" "as_user=${As_User}" -d "username=${BotName}" "https://slack.com/api/chat.postMessage" --fail
+curl -X POST -d "token=${Token}" -d "channel=${channel}" -d "text=${Message}" "as_user=${As_User}" -d "username=${BotName}" "https://slack.com/api/chat.postMessage" --fail
 # --fail option tell curl to output errorcodes.
 
 # Error check ( I'll change curl option --fail to -w '%{http_code}\n'
