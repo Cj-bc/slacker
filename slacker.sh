@@ -43,5 +43,5 @@ case "$1" in
  "send" | "s" )  shift;send "$＊" ;;
  "channel" | "c" ) shift;setting_channel "$＊" ;;
  "user" | "u" ) shift;setting_user "$＊" ;;
- ＊ ) echo "unknown argument.\n${usage}"
+ ＊ ) echo "unknown argument.\n${usage}" 1>&2 ;;
 esac

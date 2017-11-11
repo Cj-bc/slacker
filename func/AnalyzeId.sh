@@ -40,7 +40,7 @@ function GetUserId {
  then
   :
  else
-  echo $NoExistUserName
+  echo $NoExistUserName 1>&2
   return $Error_NoExistUsrName
  fi 
 #4. remove .date file finally for security
