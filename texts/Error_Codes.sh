@@ -4,3 +4,4 @@
 
 
 Error_NoExistUserName=
+Error_NoExistChannelName=

@@ -11,4 +11,4 @@ AnnounceToGetToken="you need to setup slacker first\nFrom here, \n${URL_GetToken
 #
 
 NoExistUserName="Sorry,But that user does not exist.Don't you make spell mistakes?\nPlease set username again."
-
+NoExistChannelName="Sorry,But that channel does not exist.Don't you make spell mistakes?\nPlease set channelname again."

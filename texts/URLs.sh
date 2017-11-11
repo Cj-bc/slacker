@@ -16,3 +16,5 @@ GuideToGetToken="./texts/guides/GetToken.txt"
 UserListURL="https://slack.com/api/users.list"
 ImListURL= "https://slack.com/api/im.list"
 ImOpenURL="https://slack.com/api/im.open"
+ChannelListURL="https://slack.com/api/channels.list"
+

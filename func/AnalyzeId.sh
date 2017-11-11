@@ -8,10 +8,6 @@
 #
 
 
-##############
-# making
-##############
-#
 # Using files
 #  * .basicconf
 #  * texts/FunctionsTexts.sh
@@ -46,7 +42,7 @@ function GetUserId {
 #4. remove .date file finally for security
  echo `tail -n 2 .data | head -n 1`
  rm .data
-
+ return 0
 }
 
 
@@ -85,17 +81,30 @@ function GetImId {
 #4. remove .date file finally for security
  echo `tail -n 2 .data | head -n 1`
  rm .data
+ return 0
 
 }
 
 
-function GetChannelId {                                                                            
 
- case $1 in
-  "user:"* )
-  * )  ChannelName=$1
- esac 
+function GetChannelId { 
 
+ local channelname=$1;
+
+ curl -d "token=${Token}" -o .data $ChannelListURL 
+ awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' ./.data > .data
+
+ if cat .data | grep ${channelname}
+ then
+  :
+ else
+  echo $NoExistChannelName 1>&2
+  return $Error_NoExistChannelName
+ fi
+
+ echo `tail -n 2 .data | head -n 1`
+ rm .data
+ return 0
 }
  
 
