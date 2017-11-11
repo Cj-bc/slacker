@@ -8,6 +8,7 @@
 # feature  
  * you're now free from your mouse and trackpad to use slack app!
  * Notifications? Please get them from your slack app ;)
+ * Now, it supports pipe command (Add:2017/11/11)  
 
 # infomations of making  
  I'll write blog about making slacker on <http://blog.y-modify.org>
