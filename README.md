@@ -9,7 +9,7 @@
  * you're now free from your mouse and trackpad to use slack app!
  * Notifications? Please get them from your slack app ;)
  * Now, it supports pipe command (Add:2017/11/11)  
-
+ * Developing environment is macOS Sierra10.12.6(2017/11/11)
 # infomations of making  
  I'll write blog about making slacker on <http://blog.y-modify.org>
   * *English*
@@ -37,6 +37,7 @@
  * ~~AnalyzeId.GetUserId()~~
  * texts/Error_Codes.sh
  * AnalyzeId.GetImId() -- almost finished
+ * usage() --Need to make
 
 # ToDos  
  * make the core part
@@ -45,7 +46,7 @@
   * automatically get a token   -> someday
   * Get http status code
   * Deside Error codes
-  * Use camelcase
+  * Use camelcase/snakecase
   * Need to know how to output errormessage directly to basic output(= commandline)
  * open slack app when slacker is called with -o option or sonething like that.
  * Japanese support
