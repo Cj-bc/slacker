@@ -29,6 +29,14 @@ then
  exit 0
 fi
 
+
+# if slacker is called with pipe, send them to selected channel with some texts.
+if [ -p /dev/stdin ]
+then
+ Send < /dev/stdin 
+fi
+
+
 #
 # test all arg and call function
 # Functions are here:
