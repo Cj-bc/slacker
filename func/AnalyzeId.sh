@@ -18,15 +18,6 @@
 #  * texts/URLs.sh
 #  * texts/Error_Codes.sh
 
-function GetChannelId {
-
- case $1 in
-  "user:"* ) 
- ChannelName=$1
- esac
-
-}
-
 
 function GetUserId {
 
@@ -96,3 +87,16 @@ function GetImId {
  rm .data
 
 }
+
+
+function GetChannelId {                                                                            
+
+ case $1 in
+  "user:"* )
+  * )  ChannelName=$1
+ esac 
+
+}
+ 
+
+
