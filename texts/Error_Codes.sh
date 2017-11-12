@@ -5,3 +5,5 @@
 
 Error_NoExistUserName=
 Error_NoExistChannelName=
+Error_HTTP=
+Error_API=

@@ -38,6 +38,8 @@
  * texts/Error_Codes.sh
  * AnalyzeId.GetImId() -- almost finished
  * usage() --Need to make
+ * ~~errorsfunc.ErrorCheckAPI() ~~ 
+ * errorsfunc.ErrorCheckHTTP()
 
 # ToDos  
  * make the core part
