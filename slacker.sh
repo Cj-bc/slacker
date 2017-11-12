@@ -33,7 +33,7 @@ fi
 # if slacker is called with pipe, send them to selected channel with some texts.
 if [ -p /dev/stdin ]
 then
- Send < /dev/stdin 
+ send < /dev/stdin 
 fi
 
 

@@ -1,1 +1,1 @@
-usage="usage : slacker <set|send|channel|user> \n press \"man slacker\" for more info"
+usage="usage : slacker <set|send|channel|user> \n press \"man slacker\" for more info\n"
