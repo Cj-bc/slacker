@@ -13,7 +13,8 @@
 #     ./func/AnalyzeId.sh
 #     ./.slackerconf
 
-function send {
+
+function send_main {
 
  local http_status=0
 #
@@ -50,4 +51,16 @@ function send {
  else
   return $Error_HTTP
  fi
+}
+
+
+# I needed this function to judge whether message has sent correctly.
+function send {
+
+ send_main
+ case $? in
+  0) echo $SendSuccess;return 0;;
+  $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
+  $Error_API ) echo $SendFailed;return $Error_API;;
+ esac
 }
