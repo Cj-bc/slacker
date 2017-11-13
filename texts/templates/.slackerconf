@@ -2,8 +2,12 @@
 # this file will be automatically generated.
 
 # user infos
-# Channel names and id should be linked here
+ "channel": "undefined",
+
+# send options
 
 
-# user names and id should be linked here
-
+"chat.postMessage": {
+  "as_user": true,
+  "username": "my bot",
+}
