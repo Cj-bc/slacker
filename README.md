@@ -28,7 +28,7 @@
 
 # in_prgress
  * ~~slacker.sh~~
- * settingfunc.setup()
+ * ~~settingfunc.setup()~~ (Just initialization)
  * ~~settingfunc.setting_channel()~~
  * ~~settingfunc.setting_user()~~
  * ~~sendfunc.send()~~

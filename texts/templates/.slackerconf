@@ -9,5 +9,5 @@
 
 "chat.postMessage": {
   "as_user": true,
-  "username": "my bot",
+  "username": "slackerbot",
 }
