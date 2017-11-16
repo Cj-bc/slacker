@@ -54,3 +54,9 @@ function setting_user {
  UserName=$1
  UserId=`GetUserId $UserName`
 }
+
+
+function usage {
+ echo $UsageText
+ exit 1
+}

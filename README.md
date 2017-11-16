@@ -37,7 +37,7 @@
  * ~~AnalyzeId.GetUserId()~~
  * texts/Error_Codes.sh
  * ~~AnalyzeId.GetImId()~~
- * usage() --Need to make
+ * ~~usage() --Need to make~~
  * ~~errorsfunc.ErrorCheckAPI()~~ 
  * ~~errorsfunc.ErrorCheckHTTP()~~
 
