@@ -3,7 +3,7 @@
 #
 # For settingfunc.sh
 #
-AnnounceToGetToken="you need to setup slacker first\nFrom here, \n${URL_GetToken}\nPlease get a token,and type it here.\nif you don't know how to do,this file will help you\n${GuideToGetToken}\n"
+AnnounceToGetToken="\nFrom here, \n${URL_GetToken}\nPlease get a token,and type it here.\nif you don't know how to do,this file will help you\n${GuideToGetToken}\n"
 AnnounceToSetChannel="Please set default Channel(you can change anytime you want.\n Channel> "
 AnnounceToSetUsername="\nPlease type yourname ( message will be send as \"yourname on CUI\" when as_user is false),or it'll be \"slackerbot\".\n( as_user default to true)"
 UsageText="\n  Usage:\n   slacker [init] [set  ] [send|s #channel|@user] [channel|c ChannelName] [user|u DM_username]\n   slacker send|s [#channel|@user] messages\n\n  Description:\n  This send slack message." # I wanted to make this text be heredocument
