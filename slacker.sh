@@ -10,16 +10,16 @@
 
 # source textfiles,functions
 Version=0.0.1
-source ./func/*
-source ./texts/*
-source .basicconf
+source .sourcefiles
 
 # test wheather initialization is in need
-if [ "$1" -eq "init" ] || [ -f .basicconf ] && [ $# -ne 0 ]
+if [ "$1" = "init" ] || !  [ -f .basicconf ]
 then
  echo "you need to setup your slacker first."
  setup first      #this is in settingfunc.sh file.
  exit 0
+else
+ source .basicconf
 fi
 
 # with no arg,show version
