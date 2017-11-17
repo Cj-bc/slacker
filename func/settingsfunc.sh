@@ -27,13 +27,13 @@ function setup {
  then
   cp ./texts/templates/.slackerconf .slackerconf
   echo $AnnounceToGetToken
-  read -s Token
+  read -s Token; echo "\n"
   sed -e "/Token :/i $Token" .basicconf
   echo $AnnounceToSetChannel
-  read ChannelName
+  read ChannelName; echo "\n"
   sed -e "/\"Channel\": /i \"$ChannelName\"" .slackerconf
   echo $AnnounceToSetUsername
-  read UserName
+  read UserName; echo "\n"
   if [ -z $ UserName ]
   then
    sed -e "/\"username\": /i \"slackerbot\"" .slackerconf
