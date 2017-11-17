@@ -24,9 +24,9 @@ function send_main {
 #
 
  case $1 in
-  \#* ) SendToId=`GetChannelId ${$1:1}` ; shift
-  @* ) SendToId=`GetImId `GetUserId ${$1:1}``;shift  ### IT CAN'T WORK AT ALL.So I'll fix. ###
-  * ) SendToId=$ChannelId
+  \#* ) SendToId=`GetChannelId ${$1:1}` ; shift;;
+  @* ) SendToId=`GetImId `GetUserId ${$1:1}``;shift;;  ### IT CAN'T WORK AT ALL.So I'll fix. ###
+  * ) SendToId=$ChannelId;;
  esac
 
 # now, message should be in $1 because of shift command.
