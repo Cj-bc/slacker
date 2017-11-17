@@ -27,7 +27,7 @@ function setup {
  then
   cp ./texts/templates/.slackerconf .slackerconf
   echo $AnnounceToGetToken
-  read Token
+  read -s Token
   sed -e "/Token :/i $Token" .basicconf
   echo $AnnounceToSetChannel
   read ChannelName
