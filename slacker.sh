@@ -10,6 +10,7 @@
 
 # source textfiles,functions
 Version=0.0.1
+shopt -s xpg_echo
 source .sourcefiles
 
 # test wheather initialization is in need

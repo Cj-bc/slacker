@@ -1,0 +1,13 @@
+# there will be config values
+# this file will be automatically generated.
+
+# user infos
+ "channel": "undefined",
+
+# send options
+
+
+"chat.postMessage": {
+  "as_user": true,
+  "username": "slackerbot",
+}
