@@ -23,7 +23,7 @@ function setup {
  local ChanelName
  local UserName
 
- if [ $1 -eq "first" ]
+ if [ "$1" = "first" ]
  then
   cp ./texts/templates/.slackerconf .slackerconf
   echo $AnnounceToGetToken
