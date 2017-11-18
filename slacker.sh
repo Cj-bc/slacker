@@ -46,7 +46,7 @@ fi
 #
 
 case "$1" in
- "set" ) shift;setting "$＊" ;;
+ "set" ) shift;settingconf "$＊" ;;
  "send" | "s" )  shift;send "$＊" ;;
  "channel" | "c" ) shift;setting_channel "$＊" ;;
  "user" | "u" ) shift;setting_user "$＊" ;;

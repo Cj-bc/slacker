@@ -12,6 +12,19 @@
 
 source texts/FunctionsTexts.sh   #All texts are in here.
 
+function settingconf {
+ local Key=$1
+ local Arg=$2
+
+ awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$4="\""arg"\""} {print $0}' .slackerconf > .slackerconfch1
+ rm .slackerconf
+ mv .slackerconfch1 .slackerconf
+echo "debug settingfunc.beforereturn"
+ return 0
+}
+
+
+
 
 #
 #  By using setup function,
@@ -31,30 +44,28 @@ function setup {
   echo " \"Token\": \"$Token\" " > .basicconf
   echo $AnnounceToSetChannel
   read ChannelName
-  awk -v channelname=$ChannelName -F "\"" 'BEGIN{OFS=""} /channel/ {$2="\"channel\"";$4="\""channelname"\""} {print $0} ' .slackerconf > .slackerconfch1
+  settingconf channel $ChannelName
   echo $AnnounceToSetUsername
   read UserName
   if [ -z $UserName ]
   then
-   awk  -F "\"" 'BEGIN{OFS=""} /username/ {$2="\"username\"";$4="\"slackerbot\""} {print $0} ' .slackerconfch1 > .slackerconfch2
+   settingconf username slackerbot
   else
-   awk -v username=$UserName -F "\"" 'BEGIN{OFS=""} /username/ {$2="\"username\"";$4="\""username"\""} {print $0} ' .slackerconfch1 > .slackerconfch2
+   settingconf username $UserName
   fi
-  rm .slackerconf .slackerconfch1
-  mv .slackerconfch2 .slackerconf
  fi
-
- 
 }
 
 function setting_channel {
  ChannelName=$1
  ChannelId=`GetChannelId $ChannelName`
+ return 0
 }
 
 function setting_user {
  UserName=$1
  UserId=`GetUserId $UserName`
+ return 0
 }
 
 
