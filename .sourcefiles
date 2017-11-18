@@ -4,6 +4,7 @@ source texts/Error_Codes.sh
 source texts/FunctionsTexts.sh
 source texts/URLs.sh
 
+source func/commonfunc.sh
 source func/AnalyzeId.sh
 source func/Errorfunc.sh
 source func/sendfunc.sh

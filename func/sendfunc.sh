@@ -56,6 +56,11 @@ function send_main {
 
 # I needed this function to judge whether message has sent correctly.
 function send {
+ if [ $# -eq 0 ] || [ $# -gt 2 ]
+ then
+  echo $Text_NotProperArguments
+  return $Error_NotProperArguments
+ fi
 
  send_main
  case $? in

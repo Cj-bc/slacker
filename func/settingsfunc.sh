@@ -13,6 +13,12 @@
 source texts/FunctionsTexts.sh   #All texts are in here.
 
 function settingconf {
+ if [ $# -ne 2 ]
+ then
+  echo $Text_NotProperArguments
+  return $Error_NotProperArguments
+ fi
+
  local Key=$1
  local Arg=$2
 
@@ -32,6 +38,12 @@ echo "debug settingfunc.beforereturn"
 # more settings are defaulted.see .slackerconf
 #
 function setup {
+  if [ $# -ne 1 ]
+ then
+  echo $Text_NotProperArguments
+  return $Error_NotProperArguments
+ fi
+
  local Token
  local ChanelName
  local UserName
@@ -57,19 +69,25 @@ function setup {
 }
 
 function setting_channel {
+ if [ $# -ne 2 ]
+ then
+  echo $Text_NotProperArguments
+  return $Error_NotProperArguments
+ fi
+
  ChannelName=$1
  ChannelId=`GetChannelId $ChannelName`
  return 0
 }
 
 function setting_user {
+ if [ $# -ne 2 ]
+ then
+  echo $Text_NotProperArguments
+  return $Error_NotProperArguments
+ fi
+
  UserName=$1
  UserId=`GetUserId $UserName`
  return 0
-}
-
-
-function usage {
- echo $UsageText
- exit 1
 }

@@ -45,6 +45,7 @@ fi
 # sendfunc.sh --- send
 #
 
+
 case "$1" in
  "set" ) shift;settingconf $＊ ;;
  "send" | "s" )  shift;send $＊;;
