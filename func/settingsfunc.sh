@@ -31,26 +31,17 @@ function setup {
   echo " \"Token\": \"$Token\" " > .basicconf
   echo $AnnounceToSetChannel
   read ChannelName
-
-###########################################################
-########              EDITING HERE
-#############################################################
-
-
-  ex .slackerconf << _EOT_ 
-   s/\"channel\": \"/\"channel\"/: \"$ChannelName\" 
-_EOT_
-
-
-  awk -v channelname=$ChannelName -F "\"" ' /"channel"/ { $4=channelname;print $4 } ' .slackerconf
+  awk -v channelname=$ChannelName -F "\"" 'BEGIN{OFS=""} /channel/ {$2="\"channel\"";$4="\""channelname"\""} {print $0} ' .slackerconf > .slackerconfch1
   echo $AnnounceToSetUsername
   read UserName
   if [ -z $UserName ]
   then
-   awk -F "\"" ' /"username"/ { $4="slackerbot";print $4 } ' .slackerconf
+   awk  -F "\"" 'BEGIN{OFS=""} /username/ {$2="\"username\"";$4="\"slackerbot\""} {print $0} ' .slackerconfch1 > .slackerconfch2
   else
-   awk -v username=$UserName -F "\"" ' /"username"/ { $4=username " on CUI";print $4 } ' .slackerconf
+   awk -v username=$UserName -F "\"" 'BEGIN{OFS=""} /username/ {$2="\"username\"";$4="\""username"\""} {print $0} ' .slackerconfch1 > .slackerconfch2
   fi
+  rm .slackerconf .slackerconfch1
+  mv .slackerconfch2 .slackerconf
  fi
 
  
