@@ -19,8 +19,6 @@ then
  echo "you need to setup your slacker first."
  setup first      #this is in settingfunc.sh file.
  exit 0
-else
- source .basicconf
 fi
 
 # with no arg,show version
