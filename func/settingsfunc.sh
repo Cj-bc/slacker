@@ -28,17 +28,28 @@ function setup {
   cp ./texts/templates/.slackerconf .slackerconf
   echo $AnnounceToGetToken
   read -s Token; echo "\n"
-  sed -e "/Token :/i $Token" .basicconf
+  echo " \"Token\": \"$Token\" " > .basicconf
   echo $AnnounceToSetChannel
-  read ChannelName; echo "\n"
-  sed -e "/\"Channel\": /i \"$ChannelName\"" .slackerconf
+  read ChannelName
+
+###########################################################
+########              EDITING HERE
+#############################################################
+
+
+  ex .slackerconf << _EOT_ 
+   s/\"channel\": \"/\"channel\"/: \"$ChannelName\" 
+_EOT_
+
+
+  awk -v channelname=$ChannelName -F "\"" ' /"channel"/ { $4=channelname;print $4 } ' .slackerconf
   echo $AnnounceToSetUsername
-  read UserName; echo "\n"
-  if [ -z $ UserName ]
+  read UserName
+  if [ -z $UserName ]
   then
-   sed -e "/\"username\": /i \"slackerbot\"" .slackerconf
+   awk -F "\"" ' /"username"/ { $4="slackerbot";print $4 } ' .slackerconf
   else
-   sed -e "/\"username\": /i \"$UserName on CUI\"" .slackerconf
+   awk -v username=$UserName -F "\"" ' /"username"/ { $4=username " on CUI";print $4 } ' .slackerconf
   fi
  fi
 
