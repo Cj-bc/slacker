@@ -21,11 +21,13 @@ function settingconf {
 
  local Key=$1
  local Arg=$2
-
- awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$4="\""arg"\""} {print $0}' .slackerconf > .slackerconfch1
+# some keys should be true/false. so i should detect whether it is.
+ case $Key in
+  "as_user" ) awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$3=": "arg;$5=","} {print $0}' .slackerconf > .slackerconfch1;;
+  * ) awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$4="\""arg"\"";$5=","} {print $0}' .slackerconf > .slackerconfch1;;
+ esac
  rm .slackerconf
  mv .slackerconfch1 .slackerconf
-echo "debug settingfunc.beforereturn"
  return 0
 }
 
