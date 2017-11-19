@@ -28,7 +28,7 @@ function send_main {
 
  case $firstarg in
   %* ) SendToId=`GetChannelId ${firstarg:1}` ; shift;;
-  @* ) SendToId=`GetImId `GetUserId ${$firstarg:1}``;shift;;  ### IT CAN'T WORK AT ALL.So I'll fix. ###
+  @* ) SendToId=`GetUserId ${firstarg:1} | GetImId`;shift;;  ### IT CAN'T WORK AT ALL.So I'll fix. ###
   * ) SendToId=`GetChannelId`;;
  esac
 echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
