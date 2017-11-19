@@ -16,7 +16,7 @@
 
 
 function GetUserId {
-
+ local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
  UserName=$1
 
 
@@ -52,7 +52,7 @@ function GetUserId {
 # GetImId is almost the same as GetUserId
 #
 function GetImId {
-
+ local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
  UserId=$1
 
 #
@@ -88,7 +88,7 @@ function GetImId {
 
 
 function GetChannelId { 
-
+ local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
  local channelname=$1;
 
  curl -s -d "token=${Token}" -o .data $ChannelListURL 
