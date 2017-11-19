@@ -23,6 +23,11 @@
  * users:read
  * users:write
 
+# Needed commands
+ * python -mjson.tool
+ * awk(not gnu-awk)
+ And...
+
 # LICENSE
  This software is released under MIT License,see `LICENSE`
 
