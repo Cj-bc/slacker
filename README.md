@@ -9,7 +9,7 @@
  * you're now free from your mouse and trackpad to use slack app!
  * Notifications? Please get them from your slack app ;)
  * Now, it supports pipe command (Add:2017/11/11)  
- * Developing environment is macOS Sierra10.12.6(2017/11/11)
+ * **Developing environment is macOS Sierra10.12.6(2017/11/11)**
 # infomations of making  
  I'll write blog about making slacker on <http://blog.y-modify.org>
   * *English*
@@ -39,6 +39,8 @@
  * open slack app when slacker is called with -o option or sonething like that.
  * Japanese support
  * Limit input for config file(func/settingsfunc.sh) 
+ * Make man page
+ * cope with homebrew
 
 # problems I have  
  * What's the best grammer ??
