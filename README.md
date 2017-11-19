@@ -28,30 +28,17 @@
 
 # in_prgress
  * ~~slacker.sh~~
- * ~~settingfunc.setup()~~ (Just initialization)
- * ~~settingfunc.setting_channel()~~
- * ~~settingfunc.setting_user()~~
- * ~~sendfunc.send()~~
-  * ~~curl option to get http status code~~
- * ~~AnalyzeId.GetChannelId()~~  
- * ~~AnalyzeId.GetUserId()~~
  * texts/Error_Codes.sh
- * ~~AnalyzeId.GetImId()~~
- * ~~usage() --Need to make~~
- * ~~errorsfunc.ErrorCheckAPI()~~ 
- * ~~errorsfunc.ErrorCheckHTTP()~~
 
 # ToDos  
  * make the core part
-  * ~~get user id and IM id to send DM~~
-   * ~~user.list & im.list methots~~
   * automatically get a token   -> someday
-  * ~~Get http status code~~
   * Deside Error codes
   * Use camelcase/snakecase
   * Need to know how to output errormessage directly to basic output(= commandline)
  * open slack app when slacker is called with -o option or sonething like that.
  * Japanese support
+ * Limit input for config file(func/settingsfunc.sh) 
 
 # problems I have  
  * What's the best grammer ??
