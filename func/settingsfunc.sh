@@ -71,7 +71,7 @@ function setup {
 }
 
 function setting_channel {
- if [ $# -ne 2 ]
+ if [ $# -ne 1 ]
  then
   echo $Text_NotProperArguments
   return $Error_NotProperArguments
@@ -83,7 +83,7 @@ function setting_channel {
 }
 
 function setting_user {
- if [ $# -ne 2 ]
+ if [ $# -ne 1 ]
  then
   echo $Text_NotProperArguments
   return $Error_NotProperArguments
