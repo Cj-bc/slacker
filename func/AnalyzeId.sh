@@ -28,7 +28,7 @@ function GetUserId {
 #
 
 # 1. -o option output the response
- curl -d "token=${Token}" -o .data $UserListURL
+ curl -s -d "token=${Token}" -o .data $UserListURL
 # 2. 
  awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' ./.data > .data  
 # 3.
@@ -67,7 +67,7 @@ function GetImId {
 
 
 # 1. -o option output the response
- curl -d "token=${Token}" -o .data $ImListURL
+ curl -s -d "token=${Token}" -o .data $ImListURL
 # 2. 
  awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' ./.data > .data  
 # 3.
@@ -75,7 +75,7 @@ function GetImId {
  then
   :
  else
-  curl -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" -o .data $ImOpenURL
+  curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" -o .data $ImOpenURL
   awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' ./.data > .data
  fi 
 #4. remove .date file finally for security
@@ -91,7 +91,7 @@ function GetChannelId {
 
  local channelname=$1;
 
- curl -d "token=${Token}" -o .data $ChannelListURL 
+ curl -s -d "token=${Token}" -o .data $ChannelListURL 
  awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' ./.data > .data
 
  if cat .data | grep ${channelname}
