@@ -9,13 +9,10 @@
 
 
 function ErrorCheckAPI() {
-
-# detect whether error has happened
- if grep "\"ok\": false" .response
+# detect whether error hae happened
+ if [ `echo $1 | grep "ok":false;echo $?` -ne 0 ]
  then
-  echo "API_Error: "
-  awk -F "\"" ' /"error"/ { print $4 }  ' .response | echo; echo"\n"
-  rm .response
+  echo "API_Error: "`echo $1 | awk -F "[\{\":,\}]" ' {print $10} ' `
   return $Error_API 
  fi
 
@@ -23,8 +20,7 @@ function ErrorCheckAPI() {
 }
 
 function ErrorCheckHTTP() {
-
- case $1 in
+ case `echo $1 | tail -c 4` in
   200) return 0 ;;
   301) echo $HTTP_301 1>&2;;
   400) echo $HTTP_400 1>&2;;
