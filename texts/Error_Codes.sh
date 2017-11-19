@@ -8,3 +8,4 @@ Error_NoExistChannelName=2
 Error_HTTP=3
 Error_API=4
 Error_NotProperArguments=5
+Error_NotTrueOrFalse=6

@@ -21,9 +21,14 @@ function settingconf {
 
  local Key=$1
  local Arg=$2
-# some keys should be true/false. so i should detect whether it is.
+# some keys should be true/false.
  case $Key in
-  "as_user" ) awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$3=": "arg;$5=","} {print $0}' .slackerconf > .slackerconfch1;;
+  "as_user" )      # keys here should be true/false.
+     if ! [ "$Arg" = "true" -o "$Arg" = "false" ];then
+       echo $Text_NotTrueOrFalse
+       return $Error_NotTrueOrFalse
+     fi
+     awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$3=": "arg;$5=","} {print $0}' .slackerconf > .slackerconfch1;;
   * ) awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$4="\""arg"\"";$5=","} {print $0}' .slackerconf > .slackerconfch1;;
  esac
  rm .slackerconf
