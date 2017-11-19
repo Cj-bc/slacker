@@ -32,7 +32,7 @@ function GetUserId {
 # 2. 
  awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' ./.data > .data  
 # 3.
- if cat .data | grep ${UserName}
+ if `cat .data | grep ${UserName};echo $?`
  then
   :
  else
@@ -89,22 +89,27 @@ function GetImId {
 
 function GetChannelId { 
  local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
- local channelname=$1;
-
- curl -s -d "token=${Token}" -o .data $ChannelListURL 
- awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' ./.data > .data
-
- if cat .data | grep ${channelname}
+ if [ $# -eq 0 ]
  then
-  :
+  local channelname=`awk -F "\"" ' /channel/ {print $4} ' .slackerconf`
+ else
+  local channelname=$1;
+ fi
+ curl -s -d "token=${Token}" -o .data $ChannelListURL 
+ awk ' { gsub(",","\n");print } ' .data > .data2
+ awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' ./.data2 > .data3
+ if cat .data3 | grep ${channelname}
+ then
+   :
  else
   echo $NoExistChannelName 1>&2
   return $Error_NoExistChannelName
  fi
 
- echo `tail -n 2 .data | head -n 1`
- rm .data
- return 0
+ echo "debug: here should be ID below:"`tail -n 2 .data3 | head -n 1`
+echo "debug: last output's status is "$?"(at GetChannelId:line110)"
+ rm .data .data2 .data3
+ return 0 
 }
  
 
