@@ -28,11 +28,11 @@ function GetUserId {
 #
 
 # 1. -o option output the response
- curl -s -d "token=${Token}" -o .data $UserListURL
+ curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data
 # 2. 
- awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' ./.data > .data  
+ awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' .data > .data2
 # 3.
- if `cat .data | grep ${UserName};echo $?`
+ if cat .data2 | grep ${UserName}
  then
   :
  else
@@ -53,7 +53,18 @@ function GetUserId {
 #
 function GetImId {
  local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
- UserId=$1
+
+#################################################################  
+#
+#  IS IT POSSIBLE???????
+###########################j######################################
+ if [ -p /dev/stdin ]
+ then
+  read UserId  < /dev/stdin
+echo "debug: UserId with pipe is "$UserId"(at GetImId:line64)"
+ else
+  UserId=$1
+ fi
 
 #
 # User should be correct because only system call this function 
@@ -95,6 +106,7 @@ function GetChannelId {
  else
   local channelname=$1;
  fi
+
  curl -s -d "token=${Token}" $ChannelListURL | python -mjson.tool > .data
  awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' .data > .data2
 
