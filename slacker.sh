@@ -51,5 +51,6 @@ case "$1" in
  "send" | "s" )  shift;send $@;;
  "channel" | "c" ) shift;setting_channel $@;;
  "user" | "u" ) shift;setting_user $@;;
+ "help" | "h" ) man slacker;;    # Not ready now
  * ) echo "unknown argument.\n${usage}" 1>&2;;
 esac
