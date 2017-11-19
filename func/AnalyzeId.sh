@@ -95,10 +95,9 @@ function GetChannelId {
  else
   local channelname=$1;
  fi
- curl -s -d "token=${Token}" -o .data $ChannelListURL 
- awk ' { gsub(",","\n");print } ' .data > .data2
- awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' ./.data2 > .data3
- if cat .data3 | grep ${channelname}
+ curl -s -d "token=${Token}" $ChannelListURL | python -mjson.tool > .data
+ awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' .data > .data2
+ if cat .data2 | grep ${channelname}
  then
    :
  else
@@ -106,9 +105,9 @@ function GetChannelId {
   return $Error_NoExistChannelName
  fi
 
- echo "debug: here should be ID below:"`tail -n 2 .data3 | head -n 1`
+ echo "debug: here should be ID below:"`tail -n 2 .data2 | head -n 1`
 echo "debug: last output's status is "$?"(at GetChannelId:line110)"
- rm .data .data2 .data3
+ #rm .data .data2 
  return 0 
 }
  
