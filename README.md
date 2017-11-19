@@ -38,7 +38,6 @@
   * Need to know how to output errormessage directly to basic output(= commandline)
  * open slack app when slacker is called with -o option or sonething like that.
  * Japanese support
- * Limit input for config file(func/settingsfunc.sh) 
  * Make man page
  * cope with homebrew
 
