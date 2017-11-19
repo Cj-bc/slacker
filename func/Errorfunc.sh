@@ -10,7 +10,7 @@
 
 function ErrorCheckAPI() {
 # detect whether error hae happened
- if [ `echo $1 | grep "ok":false;echo $?` -ne 0 ]
+ if echo $1 | grep "\"ok\":false"
  then
   echo "API_Error: "`echo $1 | awk -F "[\{\":,\}]" ' {print $10} ' `
   return $Error_API 
