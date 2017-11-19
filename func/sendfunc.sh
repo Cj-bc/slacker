@@ -65,8 +65,10 @@ function send {
  fi
 
  send_main $@
- case $? in
-  0) echo $SendSuccess;return 0;;
+local debugarg=$?
+echo "debug: \$? of send_main is "$debugarg"(at send:line69)"
+ case $debugarg in
+  0 ) echo $SendSuccess;return 0;;
   $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
   $Error_API ) echo $SendFailed;return $Error_API;;
  esac
