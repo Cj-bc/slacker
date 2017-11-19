@@ -15,20 +15,23 @@
 
 
 function send_main {
-
+ local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+ local As_User=`awk -F "\"" ' /as_user/ {print $3} ' .slackerconf`
+ local BotName=`awk -F "\"" ' /username/ {print $4} ' .slackerconf`
  local http_status=0
+ local firstarg=$1
 #
 # Set Id which slacker send messages to
 # If username or channelname was passed,Get Id related to 
 # If nothing was passed,Get selected Id in settingconf
 #
 
- case $1 in
-  \#* ) SendToId=`GetChannelId ${$1:1}` ; shift;;
-  @* ) SendToId=`GetImId `GetUserId ${$1:1}``;shift;;  ### IT CAN'T WORK AT ALL.So I'll fix. ###
-  * ) SendToId=$ChannelId;;
+ case $firstarg in
+  %* ) SendToId=`GetChannelId ${firstarg:1}` ; shift;;
+  @* ) SendToId=`GetImId `GetUserId ${$firstarg:1}``;shift;;  ### IT CAN'T WORK AT ALL.So I'll fix. ###
+  * ) SendToId=`GetChannelId`;;
  esac
-
+echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 # now, message should be in $1 because of shift command.
 # we'll send it from here
 # token is in another file
@@ -41,12 +44,11 @@ function send_main {
 
 # get http status code with -w '%{http_code}\n' option.
 # -s deny to show progress bar
- http_status=`curl -X POST -d "token=${Token}" -d "channel=${channel}" -d "text=${Message}" "as_user=${As_User}" -d "username=${BotName}" "https://slack.com/api/chat.postMessage" -o .response -w '%{http_code}\n' -s`
-
- ErrorCheckHTTP $http_status 
+ http_status=`curl -X POST -d "token=${Token}" -d "channel=${SendToId}" -d "text=${Message}" "as_user=${As_User}" -d "username=${BotName}" "https://slack.com/api/chat.postMessage" -o /dev/null -w '%{http_code}\n' -s`
+ ErrorCheckHTTP "$http_status"
  if [ $? -eq 0 ]
  then
-  ErrorCheckAPI
+  ErrorCheckAPI "$http_status"
   return $?
  else
   return $Error_HTTP
@@ -62,7 +64,7 @@ function send {
   return $Error_NotProperArguments
  fi
 
- send_main
+ send_main $@
  case $? in
   0) echo $SendSuccess;return 0;;
   $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
