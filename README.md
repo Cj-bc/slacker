@@ -45,6 +45,7 @@
  * Japanese support
  * Make man page
  * cope with homebrew
+ * Check whether token is avilable
 
 # problems I have  
  * What's the best grammer ??
