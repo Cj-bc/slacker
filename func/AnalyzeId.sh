@@ -28,11 +28,13 @@ function GetUserId {
 #
 
 # 1. -o option output the response
- curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data
+ curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data  #### I NEED TO ADD ERROR HANDLING HERE
+#echo "debug: jlIJSjlkjl.data=";cat .data
 # 2. 
+#echo "debug: before awk at GetUserId"
  awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' .data > .data2
 # 3.
- if cat .data2 | grep ${UserName}
+ if cat .data2 | grep ${UserName} > /dev/null
  then
   :
  else
@@ -40,8 +42,8 @@ function GetUserId {
   return $Error_NoExistUsrName
  fi 
 #4. remove .date file finally for security
- echo `tail -n 2 .data | head -n 1`
- rm .data
+ echo `tail -n 2 .data2 | head -n 1`
+ rm .data .data2
  return 0
 }
 
@@ -53,19 +55,18 @@ function GetUserId {
 #
 function GetImId {
  local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+#echo "debug: before awk at GetImId"
 
-#################################################################  
-#
-#  IS IT POSSIBLE???????
-###########################j######################################
+
  if [ -p /dev/stdin ]
  then
   read UserId  < /dev/stdin
-echo "debug: UserId with pipe is "$UserId"(at GetImId:line64)"
+#echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)"
  else
   UserId=$1
  fi
 
+#echo "debug: UserId is "$UserId"(at GetImId:line65)"
 #
 # User should be correct because only system call this function 
 #
@@ -78,20 +79,22 @@ echo "debug: UserId with pipe is "$UserId"(at GetImId:line64)"
 
 
 # 1. -o option output the response
- curl -s -d "token=${Token}" -o .data $ImListURL
+ curl -s -d "token=${Token}" $ImListURL | python -mjson.tool > .data3 ## I'm not sure this make .data file.'cuz it's empty in .data
+#echo "debug; ImList's .data =";cat .data3
 # 2. 
- awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' ./.data > .data  
+ awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' .data3 > .data4   ## This awk semms to output ERROR that "can't read .data"
 # 3.
- if cat .data | grep ${UserId}
+ if cat .data4 | grep ${UserId} > /dev/null
  then
   :
  else
-  curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" -o .data $ImOpenURL
-  awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' ./.data > .data
+  curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" $ImOpenURL | python -mjson.tool > .data3
+#echo "debug; ImList's second .data=";cat .data3
+  awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' .data3 > .data4
  fi 
 #4. remove .date file finally for security
- echo `tail -n 2 .data | head -n 1`
- rm .data
+ echo `tail -n 2 .data4 | head -n 1`
+ rm .data3 .data4
  return 0
 
 }
