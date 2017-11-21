@@ -36,16 +36,22 @@
  * texts/Error_Codes.sh
 
 # ToDos  
- * make the core part
-  * automatically get a token   -> someday
-  * Deside Error codes
-  * Use camelcase/snakecase
-  * Need to know how to output errormessage directly to basic output(= commandline)
+ * automatically get a token   -> someday
+ * Deside Error codes
+ * Use camelcase/snakecase
+ * Need to know how to output errormessage directly to basic output(= commandline)
  * open slack app when slacker is called with -o option or sonething like that.
  * Japanese support
  * Make man page
  * cope with homebrew
  * Check whether token is avilable
+* cope with homebrew
+* write .1 file (= man file)
+* send messages without send option
+```shellscript:semd messages without send option
+    slacker <message>
+```
+* cope with space charactercode in messages(now, can't use spacekey)
 
 # problems I have  
  * What's the best grammer ??
@@ -58,6 +64,4 @@
  * which is better to change user(or channel) selection or not when sendfunc.send() is called with arguments.
 
 # Questions
- * Can i write ${$1:1} ?
-    -- on sendfunc.send()
- * ~~Can i nest ``~~
+ All cleaned up
