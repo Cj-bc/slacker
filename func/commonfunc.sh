@@ -1,5 +1,5 @@
 
 function usage {
- echo $UsageText
+ echo $usage
  exit 1
 }
