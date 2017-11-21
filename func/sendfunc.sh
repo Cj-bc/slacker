@@ -28,10 +28,9 @@ function send_main {
 
  case $firstarg in
   %* ) SendToId=`GetChannelId ${firstarg:1}` ; shift;;
-  @* ) SendToId=`GetUserId ${firstarg:1} | GetImId`;shift;;  ### IT CAN'T WORK AT ALL.So I'll fix. ###
+  @* ) SendToId=`GetUserId ${firstarg:1} | GetImId`;shift;;
   * ) SendToId=`GetChannelId`;;
  esac
-echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 # now, message should be in $1 because of shift command.
 # we'll send it from here
 # token is in another file
@@ -65,9 +64,7 @@ function send {
  fi
 
  send_main $@
-local debugarg=$?
-echo "debug: \$? of send_main is "$debugarg"(at send:line69)"
- case $debugarg in
+ case $? in
   0 ) echo $SendSuccess;return 0;;
   $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
   $Error_API ) echo $SendFailed;return $Error_API;;
