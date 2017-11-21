@@ -49,8 +49,7 @@ fi
 case "$1" in
  "set" ) shift;settingconf $@;;
  "send" | "s" )  shift;send $@;;
- "channel" | "c" ) shift;setting_channel $@;;
- "user" | "u" ) shift;setting_user $@;;
+ "channel" | "c" ) shift;settingconf channel $1;;
  "help" | "h" ) man slacker;;    # Not ready now
  * ) echo "unknown argument.\n${usage}" 1>&2;;
 esac

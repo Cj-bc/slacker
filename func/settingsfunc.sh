@@ -13,6 +13,7 @@
 source texts/FunctionsTexts.sh   #All texts are in here.
 
 function settingconf {
+#echo "debug: \$@ of settingconf is "$@"(at settingconf:line16)"
  if [ $# -ne 2 ]
  then
   echo $Text_NotProperArguments
@@ -73,28 +74,4 @@ function setup {
    settingconf username $UserName
   fi
  fi
-}
-
-function setting_channel {
- if [ $# -ne 1 ]
- then
-  echo $Text_NotProperArguments
-  return $Error_NotProperArguments
- fi
-
- ChannelName=$1
- ChannelId=`GetChannelId $ChannelName`
- return 0
-}
-
-function setting_user {
- if [ $# -ne 1 ]
- then
-  echo $Text_NotProperArguments
-  return $Error_NotProperArguments
- fi
-
- UserName=$1
- UserId=`GetUserId $UserName`
- return 0
 }
