@@ -6,10 +6,10 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.0.1
+# version 0.1.0
 
 # source textfiles,functions
-Version=0.0.1
+Version=0.1.0
 shopt -s xpg_echo
 source .sourcefiles
 
