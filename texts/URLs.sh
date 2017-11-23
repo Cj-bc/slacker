@@ -7,6 +7,7 @@
 # 
 URL_GetToken="https://slack.com/api/"
 GuideToGetToken="./texts/guides/GetToken.txt"
+AuthTestURL="https://slack.com/api/auth.test"
 
 
 

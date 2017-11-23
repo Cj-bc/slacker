@@ -3,11 +3,13 @@
 #
 # For settingfunc.sh
 #
-AnnounceToGetToken="From here, \n${URL_GetToken}\nPlease get a token,and type it here.\nif you don't know how to do,this file will help you\n${GuideToGetToken}\n Token> \c"
+AnnounceToGetToken="From here, \n${URL_GetToken}\nPlease get a token,and type it here.\nif you don't know how to do,this file will help you\n${GuideToGetToken}"
+AnnounceToSetToken="type your token here\nToken> \c"
 AnnounceToSetChannel="Please set default Channel(you can change anytime you want.)\n Channel> \c"
 AnnounceToSetUsername="Please type yourname ( message will be send as \"yourname on CUI\" when as_user is false),or it'll be \"slackerbot\".\n( as_user default to true)\n name> \c"
 Text_NotTrueOrFalse="this key should be true or false.please set one."
 UsageText="\n  Usage:\n   slacker [init] [set  ] [send|s #channel|@user] [channel|c ChannelName] [user|u DM_username]\n   slacker send|s [#channel|@user] messages\n\n  Description:\n  This send slack message." # I wanted to make this text be heredocument
+TokenNotAvailable="It seems that this token couldn't be used.\nDon't you made mistakes for it?"
 
 #
 # For AnalyzeId.sh

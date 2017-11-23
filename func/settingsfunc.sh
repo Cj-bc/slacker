@@ -58,8 +58,13 @@ function setup {
  if [ "$1" = "first" ]
  then
   cp ./texts/templates/.slackerconf .slackerconf
-  echo $AnnounceToGetToken
+  echo "$AnnounceToGetToken\n$AnnounceToSetToken"
   read -s Token; echo "\n"
+  while curl -s -d "token=${Token}" $AuthTestURL | grep false > /dev/null
+  do
+   echo "$TokenNotAvailable\n$AnnounceToSetToken"
+   read -s Token; echo "\n"
+  done 
   echo " \"Token\": \"$Token\" " > .basicconf
   echo $AnnounceToSetChannel
   read ChannelName
