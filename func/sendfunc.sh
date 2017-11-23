@@ -31,7 +31,6 @@ function send_main {
   @* ) SendToId=`GetUserId ${firstarg:1} | GetImId`;shift;;
   * ) SendToId=`GetChannelId`;;
  esac
-#echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 
 # now, message should be in $1 because of shift command.
 # we'll send it from here
@@ -66,9 +65,6 @@ function send {
  fi
 
  send_main $@
-#local debugarg=$?
-#echo "debug: \$? of send_main is "$debugarg"(at send:line69)"
-i#case $debugarg in
  case $? in
   0 ) echo $SendSuccess;return 0;;
   $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
