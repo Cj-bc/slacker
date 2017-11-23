@@ -44,7 +44,7 @@
  * Japanese support
  * Make man page
  * cope with homebrew
- * Check whether token is avilable
+ * ~~Check whether token is avilable~~
 * cope with homebrew
 * write .1 file (= man file)
 * send messages without send option
