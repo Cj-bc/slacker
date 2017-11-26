@@ -68,7 +68,7 @@ function send {
  send_main $@
 #local debugarg=$?
 #echo "debug: \$? of send_main is "$debugarg"(at send:line69)"
-i#case $debugarg in
+#case $debugarg in
  case $? in
   0 ) echo $SendSuccess;return 0;;
   $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
