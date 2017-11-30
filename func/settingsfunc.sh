@@ -28,11 +28,11 @@ function settingconf {
        echo $Text_NotTrueOrFalse
        return $Error_NotTrueOrFalse
      fi
-     awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$3=": "arg;$5=","} {print $0}' .slackerconf > .slackerconfch1;;
-  * ) awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$4="\""arg"\"";$5=","} {print $0}' .slackerconf > .slackerconfch1;;
+     awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$3=": "arg;$5=","} {print $0}' $SlackerPath/.slackerconf > $SlackerPath/.slackerconfch1;;
+  * ) awk -v key="$Key" -v arg="$Arg" -F "\"" 'BEGIN{OFS=""} /'$Key'/ { $2="\""key"\"";$4="\""arg"\"";$5=","} {print $0}' $SlackerPath/.slackerconf > $SlackerPath/.slackerconfch1;;
  esac
- rm .slackerconf
- mv .slackerconfch1 .slackerconf
+ rm $SlackerPath/.slackerconf
+ mv $SlackerPath/.slackerconfch1 $SlackerPath/.slackerconf
  return 0
 }
 
@@ -42,7 +42,7 @@ function settingconf {
 #
 #  By using setup function,
 # user can set settings with wizard
-# more settings are defaulted.see .slackerconf
+# more settings are defaulted.see $SlackerPath/.slackerconf
 #
 function setup {
   if [ $# -ne 1 ]
@@ -57,10 +57,10 @@ function setup {
 
  if [ "$1" = "first" ]
  then
-  cp ./texts/templates/.slackerconf .slackerconf
+  cp ./texts/templates/$SlackerPath/.slackerconf $SlackerPath/.slackerconf
   echo $AnnounceToGetToken
   read -s Token; echo "\n"
-  echo " \"Token\": \"$Token\" " > .basicconf
+  echo " \"Token\": \"$Token\" " > $SlackerPath/$SlackerPath/.basicconf
   echo $AnnounceToSetChannel
   read ChannelName
   settingconf channel $ChannelName

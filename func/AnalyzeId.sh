@@ -9,14 +9,14 @@
 
 
 # Using files
-#  * .basicconf
+#  * $SlackerPath/.basicconf
 #  * texts/FunctionsTexts.sh
 #  * texts/URLs.sh
 #  * texts/Error_Codes.sh
 
 
 function GetUserId {
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
  UserName=$1
 
 
@@ -52,7 +52,7 @@ function GetUserId {
 # GetImId is almost the same as GetUserId
 #
 function GetImId {
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
 
 
  if [ -p /dev/stdin ]
@@ -95,10 +95,10 @@ function GetImId {
 
 
 function GetChannelId { 
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
  if [ $# -eq 0 ]
  then
-  local channelname=`awk -F "\"" ' /channel/ {print $4} ' .slackerconf`
+  local channelname=`awk -F "\"" ' /channel/ {print $4} ' $SlackerPath/.slackerconf`
  else
   local channelname=$1;
  fi

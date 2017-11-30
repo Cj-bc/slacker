@@ -11,13 +11,13 @@
 # we'll get user and channel ID using this.
 # needed files
 #     ./func/AnalyzeId.sh
-#     ./.slackerconf
+#     ./$SlackerPath/.slackerconf
 
 
 function send_main {
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
- local As_User=`awk -F "\"" ' /as_user/ {print $3} ' .slackerconf`
- local BotName=`awk -F "\"" ' /username/ {print $4} ' .slackerconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/$SlackerPath/.basicconf`
+ local As_User=`awk -F "\"" ' /as_user/ {print $3} ' $SlackerPath/.slackerconf`
+ local BotName=`awk -F "\"" ' /username/ {print $4} ' $SlackerPath/.slackerconf`
  local http_status=0
  local firstarg=$1
 #
@@ -36,8 +36,8 @@ function send_main {
 # token is in another file
 # channel is defined 'til the way come here.
 # text is Passed message. It's in $1 now.
-# as_user option is defined in .slackerconf
-# username option is defined in .slackerconf
+# as_user option is defined in $SlackerPath/.slackerconf
+# username option is defined in $SlackerPath/.slackerconf
  Message=$1
 
 
