@@ -6,15 +6,22 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.1.0
+# version 0.1
 
 # source textfiles,functions
-Version=0.1.0
+Version=0.1
+SlackerPath=/usr/local/Cellar/slacker
 shopt -s xpg_echo
-source .sourcefiles
+if [ -e $SlackerPath/.sourcefiles ]
+then
+  source $SlackerPath/.sourcefiles
+else
+  cp ~/Library/Caches/Homebrew/slacker--git/* $SlackerPath/$Version/bin
+  source .$SlackerPath/sourcefiles
+fi
 
 # test wheather initialization is in need
-if [ "$1" = "init" ] || !  [ -f .basicconf ]
+if [ "$1" = "init" ] || !  [ -f $SlackerPath/.basicconf ]
 then
  echo "you need to setup your slacker first."
  setup first      #this is in settingfunc.sh file.
