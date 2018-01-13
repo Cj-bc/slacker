@@ -63,7 +63,7 @@ function setup {
 		do  #---------------  Set Token
 			echo $AnnounceToGetToken
 			read -s Token; echo "\n"
-			if [ $Token = ""]
+			if [ $Token = "" ]
 			then # failed (no input)
 				echo $Text_NotProperArguments
 			else
