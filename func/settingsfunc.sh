@@ -59,7 +59,7 @@ function setup {
 	then
 
 		local SuccessFlag=0 # When each part was succeeded, set to 1
-		while $SuccessFlag
+		while [ $SuccessFlag -eq 0 ]
 		do  #---------------  Set Token
 			echo $AnnounceToGetToken
 			read -s Token; echo "\n"
@@ -73,7 +73,7 @@ function setup {
 		done
 		SuccessFlag=0 # Reset the flag
 
-		while $SuccessFlag #------------- Set default channel
+		while [ $SuccessFlag -eq 0 ] #------------- Set default channel
 		do
 			echo $AnnounceToSetChannel
 			read ChannelName
