@@ -6,10 +6,10 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.1.1.4
+# version 0.1.1.5
 
 # source textfiles,functions
-Version=0.1.1.4
+Version=0.1.1.5
 SlackerPath=/usr/local/Cellar/slacker/$Version
 shopt -s xpg_echo
 source $SlackerPath/.sourcefiles
