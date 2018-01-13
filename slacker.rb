@@ -8,9 +8,9 @@ class Slacker < Formula
   depends_on "awk"
   depends_on :python
 
-  def install
     system "mv","slacker.sh","slacker"
     bin.install "slacker"
+    system "mv","func","texts",".sourcefiles",".slackerconf","/usr/local/Cellar/slacker/0.1/"
   end
 
   test do
