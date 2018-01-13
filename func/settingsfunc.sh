@@ -57,7 +57,6 @@ function setup {
 
  if [ "$1" = "first" ]
  then
-  cp ./texts/templates/$SlackerPath/.slackerconf $SlackerPath/.slackerconf
   echo $AnnounceToGetToken
   read -s Token; echo "\n"
   echo " \"Token\": \"$Token\" " > $SlackerPath/$SlackerPath/.basicconf
