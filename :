@@ -13,7 +13,6 @@
 source texts/FunctionsTexts.sh   #All texts are in here.
 
 function settingconf {
-test "$DebugFlag" = "1"  && echo "debug: \$@ of settingconf is "$@"(at settingconf:line16)" # debugcode
  if [ $# -ne 2 ]
  then
   echo $Text_NotProperArguments
@@ -60,11 +59,11 @@ function setup {
 	then
 
 		local SuccessFlag=0 # When each part was succeeded, set to 1
-		while [ $SuccessFlag -eq 0 ]
+		while $SuccessFlag
 		do  #---------------  Set Token
 			echo $AnnounceToGetToken
 			read -s Token; echo "\n"
-			if [ $Token = "" ]
+			if [ $Token = ""]
 			then # failed (no input)
 				echo $Text_NotProperArguments
 			else
@@ -74,7 +73,7 @@ function setup {
 		done
 		SuccessFlag=0 # Reset the flag
 
-		while [ $SuccessFlag -eq 0 ] #------------- Set default channel
+		while $SuccessFlag #------------- Set default channel
 		do
 			echo $AnnounceToSetChannel
 			read ChannelName
@@ -89,6 +88,7 @@ function setup {
 			settingconf username slackerdeliver
 		else
 			settingconf username $UserName
+		else
 		fi
 	fi
 }

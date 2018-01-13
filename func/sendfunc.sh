@@ -11,13 +11,13 @@
 # we'll get user and channel ID using this.
 # needed files
 #     ./func/AnalyzeId.sh
-#     ./.slackerconf
+#     ./$SlackerPath/.slackerconf
 
 
 function send_main {
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
- local As_User=`awk -F "\"" ' /as_user/ {print $3} ' .slackerconf`
- local BotName=`awk -F "\"" ' /username/ {print $4} ' .slackerconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
+ local As_User=`awk -F "\"" ' /as_user/ {print $3} ' $SlackerPath/.slackerconf`
+ local BotName=`awk -F "\"" ' /username/ {print $4} ' $SlackerPath/.slackerconf`
  local http_status=0
  local firstarg=$1
 #
@@ -31,14 +31,15 @@ function send_main {
   @* ) SendToId=`GetUserId ${firstarg:1} | GetImId`;shift;;
   * ) SendToId=`GetChannelId`;;
  esac
+test "$DebugFlag" = "1" && echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 
 # now, message should be in $1 because of shift command.
 # we'll send it from here
 # token is in another file
 # channel is defined 'til the way come here.
 # text is Passed message. It's in $1 now.
-# as_user option is defined in .slackerconf
-# username option is defined in .slackerconf
+# as_user option is defined in $SlackerPath/.slackerconf
+# username option is defined in $SlackerPath/.slackerconf
  Message=$1
 
 
@@ -65,7 +66,9 @@ function send {
  fi
 
  send_main $@
- case $? in
+ local debugarg=$?
+test "$DebugFlag" = "1" && echo "debug: \$? of send_main is "$debugarg"(at send:line69)" # debugcode
+case $debugarg in
   0 ) echo $SendSuccess;return 0;;
   $Error_HTTP ) echo $SendFailed;return $Error_HTTP;;
   $Error_API ) echo $SendFailed;return $Error_API;;

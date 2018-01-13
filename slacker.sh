@@ -6,15 +6,26 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.1.0
+# version 0.1.1.7
 
 # source textfiles,functions
-Version=0.1.0
+Version=0.1.1.7
+SlackerPath=/usr/local/Cellar/slacker/$Version
+#SlackerPath=.   # for debug
 shopt -s xpg_echo
-source .sourcefiles
+source $SlackerPath/.sourcefiles
+
+
+# Check debug mode
+if [ "$1" = '--debug' ]
+then
+	DebugFlag=1 # Set to 1 when is debugmode
+	shift
+fi
+
 
 # test wheather initialization is in need
-if [ "$1" = "init" ] || !  [ -f .basicconf ]
+if [ "$1" = "init" ] || !  [ -f $SlackerPath/.basicconf ]
 then
  echo "you need to setup your slacker first."
  setup first      #this is in settingfunc.sh file.

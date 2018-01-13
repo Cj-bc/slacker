@@ -9,14 +9,14 @@
 
 
 # Using files
-#  * .basicconf
+#  * $SlackerPath/.basicconf
 #  * texts/FunctionsTexts.sh
 #  * texts/URLs.sh
 #  * texts/Error_Codes.sh
 
 
 function GetUserId {
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
  UserName=$1
 
 
@@ -28,8 +28,11 @@ function GetUserId {
 #
 
 # 1. -o option output the response
- curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data
+curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data
+test $DebugFlag -eq 1  && echo "debug: .data=";cat .data;echo "(at AnalyzeId:line32)" # debugcode
+
 # 2. 
+test $DebugFlag -eq 1  && echo "debug: before awk at GetUserId (at AnalyzeId:line35)" # debugcode
  awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' .data > .data2
 # 3.
  if cat .data2 | grep ${UserName} > /dev/null
@@ -52,13 +55,16 @@ function GetUserId {
 # GetImId is almost the same as GetUserId
 #
 function GetImId {
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+test $DebugFlag -eq 1 && echo "debug: before awk at GetImId.(AnalyzeId:line58)" # debugcode
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
 
  if [ -p /dev/stdin ]
  then
   read UserId  < /dev/stdin
+test $DebugFlag -eq 1 && echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)" # debugcode
  else
   UserId=$1
+test $DebugFlag -eq 1 && echo "debug: UserId is "$UserId"(at GetImId:line68)" # debugcode
  fi
 
 #
@@ -74,6 +80,7 @@ function GetImId {
 
 # 1. -o option output the response
  curl -s -d "token=${Token}" $ImListURL | python -mjson.tool > .data3 ## I'm not sure this make .data file.'cuz it's empty in .data
+test $DebugFlag -eq 1 && echo "debug; ImList's .data =";cat .data3 # debugcode
 # 2. 
  awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' .data3 > .data4   ## This awk semms to output ERROR that "can't read .data"
 # 3.
@@ -82,6 +89,8 @@ function GetImId {
   :
  else
   curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" $ImOpenURL | python -mjson.tool > .data3
+test $DebugFlag -eq 1 && echo "debug; ImList's second .data=";cat .data3 #debugcode
+
   awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' .data3 > .data4
  fi 
 #4. remove .date file finally for security
@@ -94,10 +103,10 @@ function GetImId {
 
 
 function GetChannelId { 
- local Token=`awk -F "\"" ' /Token/ {print $4}' .basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
  if [ $# -eq 0 ]
  then
-  local channelname=`awk -F "\"" ' /channel/ {print $4} ' .slackerconf`
+  local channelname=`awk -F "\"" ' /channel/ {print $4} ' $SlackerPath/.slackerconf`
  else
   local channelname=$1;
  fi
