@@ -1,10 +1,10 @@
- the files written here should be loaded when slacker will be used.
+#the files written here should be loaded when slacker will be used.
 source $SlackerPath/texts/CommonTexts.sh
 source $SlackerPath/texts/Error_Codes.sh
 source $SlackerPath/texts/FunctionsTexts.sh
 source $SlackerPath/texts/URLs.sh
 
-source $SlackerPath/ffunc/commonfunc.sh
+source $SlackerPath/func/commonfunc.sh
 source $SlackerPath/func/AnalyzeId.sh
 source $SlackerPath/func/Errorfunc.sh
 source $SlackerPath/func/sendfunc.sh
