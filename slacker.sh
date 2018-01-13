@@ -6,7 +6,7 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.1
+# version 0.1.1
 
 # source textfiles,functions
 Version=0.1.1
