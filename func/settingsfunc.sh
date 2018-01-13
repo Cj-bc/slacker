@@ -45,31 +45,50 @@ function settingconf {
 # more settings are defaulted.see $SlackerPath/.slackerconf
 #
 function setup {
-  if [ $# -ne 1 ]
- then
-  echo $Text_NotProperArguments
-  return $Error_NotProperArguments
- fi
+	if [ $# -ne 1 ]
+	then
+		echo $Text_NotProperArguments
+		return $Error_NotProperArguments
+	fi
 
- local Token
- local ChanelName
- local UserName
+	local Token
+	local ChanelName
+	local UserName
 
- if [ "$1" = "first" ]
- then
-  echo $AnnounceToGetToken
-  read -s Token; echo "\n"
-  echo " \"Token\": \"$Token\" " > $SlackerPath/$SlackerPath/.basicconf
-  echo $AnnounceToSetChannel
-  read ChannelName
-  settingconf channel $ChannelName
-  echo $AnnounceToSetUsername
-  read UserName
-  if [ -z $UserName ]
-  then
-   settingconf username slackerbot
-  else
-   settingconf username $UserName
-  fi
- fi
+	if [ "$1" = "first" ]
+	then
+
+		local SuccessFlag=0 # When each part was succeeded, set to 1
+		while $SuccessFlag
+		do  #---------------  Set Token
+			echo $AnnounceToGetToken
+			read -s Token; echo "\n"
+			if [ $Token = ""]
+			then # failed (no input)
+				echo $Text_NotProperArguments
+			else
+				echo " \"Token\": \"$Token\" " > $SlackerPath/.basicconf
+				SuccessFlag=1 # Set to 1, becaus of success
+			fi
+		done
+		SuccessFlag=0 # Reset the flag
+
+		while $SuccessFlag #------------- Set default channel
+		do
+			echo $AnnounceToSetChannel
+			read ChannelName
+			! settingconf channel $ChannelName # if succeeded -> $? = 1  failed -> $? = 0
+			SuccessFlag=$?
+		done
+
+		echo $AnnounceToSetUsername #----------- Set username (default is "slackerdeliver")
+		read UserName
+		if [ -z $UserName ]
+		then
+			settingconf username slackerdeliver
+		else
+			settingconf username $UserName
+		else
+		fi
+	fi
 }
