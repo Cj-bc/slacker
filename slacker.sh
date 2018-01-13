@@ -14,6 +14,14 @@ SlackerPath=/usr/local/Cellar/slacker/$Version
 shopt -s xpg_echo
 source $SlackerPath/.sourcefiles
 
+
+# Check debug mode
+if [ $1 = '--debug' ]
+then
+	DebugFlag=1 # Set to 1 when is debugmode
+fi
+
+
 # test wheather initialization is in need
 if [ "$1" = "init" ] || !  [ -f $SlackerPath/.basicconf ]
 then
