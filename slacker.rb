@@ -1,9 +1,9 @@
 class Slacker < Formula
-  version = "0.1.1"
+  version = "0.1.1.2"
   desc "Allows to send slack messages from terminal"
   homepage "https://github.com/Cj-bc/slacker"
   url "https://github.com/Cj-bc/slacker/archive/v" + version + ".tar.gz"
-  sha256 "56535901d6f80cb4d9a774cf78af4585869268e2a9a3a097be838b8e85b99c12"
+  sha256 "1da848f5f5195992f8b973e1600b9eee8d056da867fe90be66c42a10a9cc91e1"
   head "https://github.com/Cj-bc/slacker.git"
 
   depends_on "awk"
