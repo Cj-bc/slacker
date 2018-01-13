@@ -13,6 +13,7 @@
 source texts/FunctionsTexts.sh   #All texts are in here.
 
 function settingconf {
+test $DebugFlag -eq 1  && echo "debug: \$@ of settingconf is "$@"(at settingconf:line16)" # debugcode
  if [ $# -ne 2 ]
  then
   echo $Text_NotProperArguments
