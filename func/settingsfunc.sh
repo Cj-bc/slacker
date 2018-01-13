@@ -88,7 +88,6 @@ function setup {
 			settingconf username slackerdeliver
 		else
 			settingconf username $UserName
-		else
 		fi
 	fi
 }
