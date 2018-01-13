@@ -9,7 +9,7 @@
 # version 0.1
 
 # source textfiles,functions
-Version=0.1
+Version=0.1.1
 SlackerPath=/usr/local/Cellar/slacker/$Version
 shopt -s xpg_echo
 source $SlackerPath/.sourcefiles
