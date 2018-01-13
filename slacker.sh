@@ -10,15 +10,9 @@
 
 # source textfiles,functions
 Version=0.1
-SlackerPath=/usr/local/Cellar/slacker
+SlackerPath=/usr/local/Cellar/slacker/$Version
 shopt -s xpg_echo
-if [ -e $SlackerPath/.sourcefiles ]
-then
-  source $SlackerPath/.sourcefiles
-else
-  cp ~/Library/Caches/Homebrew/slacker--git/* $SlackerPath/$Version/bin
-  source .$SlackerPath/sourcefiles
-fi
+source $SlackerPath/.sourcefiles
 
 # test wheather initialization is in need
 if [ "$1" = "init" ] || !  [ -f $SlackerPath/.basicconf ]
