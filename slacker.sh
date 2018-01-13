@@ -6,17 +6,17 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.1.1.5
+# version 0.1.1.6
 
 # source textfiles,functions
-Version=0.1.1.5
+Version=0.1.1.6
 SlackerPath=/usr/local/Cellar/slacker/$Version
 shopt -s xpg_echo
 source $SlackerPath/.sourcefiles
 
 
 # Check debug mode
-if [ $1 = '--debug' ]
+if [ "$1" = '--debug' ]
 then
 	DebugFlag=1 # Set to 1 when is debugmode
 fi
