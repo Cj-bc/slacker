@@ -15,7 +15,7 @@
 
 
 function send_main {
- local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/$SlackerPath/.basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
  local As_User=`awk -F "\"" ' /as_user/ {print $3} ' $SlackerPath/.slackerconf`
  local BotName=`awk -F "\"" ' /username/ {print $4} ' $SlackerPath/.slackerconf`
  local http_status=0
