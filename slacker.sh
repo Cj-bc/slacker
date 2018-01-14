@@ -10,9 +10,18 @@
 
 # source textfiles,functions
 Version=0.1.2
-SlackerPath=/usr/local/Cellar/slacker/$Version
-#SlackerPath=.   # for debug
+
 shopt -s xpg_echo
+
+if [ "$1" = '--local' ] # just to make debug easier. for changing added before new version
+then
+	SlackerPath=.   # for debug
+	shift
+#echo "debug: args after --local shift -> ";echo $@;echo "(at slacker,line18)\n"  # debugcode
+else
+	SlackerPath=/usr/local/Cellar/slacker/$Version
+fi
+
 source $SlackerPath/.sourcefiles
 
 
