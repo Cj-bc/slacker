@@ -30,7 +30,7 @@ function GetUserId {
 
 # 1. -o option output the response
 curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data
-test "$DebugFlag" = "1"  && echo "debug: .data=";cat .data;echo "(at AnalyzeId:line32\n)" # debugcode
+test "$DebugFlag" = "1"  && echo "debug: .data=" && cat .data && echo "(at AnalyzeId:line32\n)" # debugcode
 
 # 2. 
 test "$DebugFlag" = "1"  && echo "debug: before awk at GetUserId (at AnalyzeId:line35)" # debugcode
@@ -39,10 +39,10 @@ test "$DebugFlag" = "1"  && echo "debug: before awk at GetUserId (at AnalyzeId:l
  if cat .data2 | grep ${UserName} > /dev/null
  then
 
-echo "debug: user exist here (at AnalyzeId,line43)" # debugcode
+#echo "debug: user exist here (at AnalyzeId,line43)" # debugcode
 	:
  else
-echo "debug: user isn't exist here (at AnalyzeId,line43)" # debugcode
+#echo "debug: user isn't exist here (at AnalyzeId,line43)" # debugcode
   echo $NoExistUserName 1>&2
   return $Error_NoExistUsrName
  fi 
@@ -67,8 +67,8 @@ test "$DebugFlag" = "1" && echo "debug: before awk at GetImId.(AnalyzeId:line58)
 	if [ -p /dev/stdin ]
 	then
 		 read UserId < /dev/stdin
-test "$DebugFlag" = "1" && echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)" # debugcode
-echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)" # debugcode
+test "$DebugFlag" = "1" && echo "debug: UserId with pipe is "$UserId"(at GetImId:line70)" # debugcode
+#echo "debug: UserId with pipe is "$UserId"(at GetImId:line71)" # debugcode
 	else
 		UserId=$1
 test "$DebugFlag" = "1" && echo "debug: UserId is "$UserId"(at GetImId:line68)" # debugcode
@@ -89,7 +89,7 @@ test "$DebugFlag" = "1" && echo "debug: UserId is "$UserId"(at GetImId:line68)" 
 
 # 1. -o option output the response
 	curl -s -d "token=${Token}" $ImListURL | python -mjson.tool > .data3 ## I'm not sure this make .data file.'cuz it's empty in .data
-test "$DebugFlag" = "1" && echo "debug; ImList's .data =";cat .data3 # debugcode
+test "$DebugFlag" = "1" && echo "debug: ImList's .data =" && cat .data3 # debugcode
 # 2. 
 	awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' .data3 > .data4   ## This awk semms to output ERROR that "can't read .data"
 	# 3.
@@ -99,9 +99,9 @@ test "$DebugFlag" = "1" && echo "debug; ImList's .data =";cat .data3 # debugcode
 	#echo "got UserId in .data4 (at Analyze,line93)" # debugcode
 		:
 	else
-echo "UserId is ";echo $UserId;echo "(at AnalyzeId,line101)" # debugcode
+#echo "UserId is ";echo $UserId;echo "(at AnalyzeId,line101)" # debugcode
 		 curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" $ImOpenURL | python -mjson.tool > .data3
-test "$DebugFlag" = "1" && echo "debug; ImList's second .data=";cat .data3 #debugcode
+test "$DebugFlag" = "1" && echo "debug: ImList's second .data=";cat .data3 #debugcode
 
 		 awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' .data3 > .data4
 	 fi 
@@ -124,7 +124,7 @@ function GetChannelId {
 	fi
 
 	curl -s -d "token=${Token}" $ChannelListURL | python -mjson.tool > .data
-	test "$DebugFlag" = "1" && echo "debug: GetChannelList's .data is  ";cat .data;echo " (at AnalyzeId,line118)" # debugcode
+	test "$DebugFlag" = "1" && echo "debug: GetChannelList's .data is  " && cat .data && echo " (at AnalyzeId,line118)" # debugcode
 	awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' .data > .data2
 
 	if cat .data2 | grep ${channelname} > /dev/null
