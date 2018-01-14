@@ -26,12 +26,14 @@ function send_main {
 # If nothing was passed,Get selected Id in settingconf
 #
 
- case $firstarg in
+#echo "debug: firstarg -> ";echo $firstarg;echo " (at send,line28)" #debugcode
+ case "$firstarg" in
   %* ) SendToId=`GetChannelId ${firstarg:1}` ; shift;;
   @* ) SendToId=`GetUserId ${firstarg:1} | GetImId`;shift;;
   * ) SendToId=`GetChannelId`;;
  esac
-test "$DebugFlag" = "1" && echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
+#test "$DebugFlag" = "1" && echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
+echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 
 # now, message should be in $1 because of shift command.
 # we'll send it from here

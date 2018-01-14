@@ -16,9 +16,10 @@
 
 
 function GetUserId {
+#echo "debug: before awk (at AnalyzeId,line19)" # debugcode
  local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
  UserName=$1
-
+#echo "debug: UserName = ";echo $UserName;echo " (at AnalyzeId,line21)" # debugcode
 
 #
 # 1.Get all userData
@@ -29,21 +30,25 @@ function GetUserId {
 
 # 1. -o option output the response
 curl -s -d "token=${Token}" $UserListURL | python -mjson.tool > .data
-test $DebugFlag -eq 1  && echo "debug: .data=";cat .data;echo "(at AnalyzeId:line32)" # debugcode
+test "$DebugFlag" = "1"  && echo "debug: .data=";cat .data;echo "(at AnalyzeId:line32\n)" # debugcode
 
 # 2. 
-test $DebugFlag -eq 1  && echo "debug: before awk at GetUserId (at AnalyzeId:line35)" # debugcode
+test "$DebugFlag" = "1"  && echo "debug: before awk at GetUserId (at AnalyzeId:line35)" # debugcode
  awk -v username=$UserName -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == username ) exit } ' .data > .data2
 # 3.
  if cat .data2 | grep ${UserName} > /dev/null
  then
-  :
+
+echo "debug: user exist here (at AnalyzeId,line43)" # debugcode
+	:
  else
+echo "debug: user isn't exist here (at AnalyzeId,line43)" # debugcode
   echo $NoExistUserName 1>&2
   return $Error_NoExistUsrName
  fi 
 #4. remove .date file finally for security
  echo `tail -n 2 .data2 | head -n 1`
+# echo `tail -n 2 .data2 | head -n 1` > debugtext # debugcode
  rm .data .data2
  return 0
 }
@@ -55,18 +60,21 @@ test $DebugFlag -eq 1  && echo "debug: before awk at GetUserId (at AnalyzeId:lin
 # GetImId is almost the same as GetUserId
 #
 function GetImId {
-test $DebugFlag -eq 1 && echo "debug: before awk at GetImId.(AnalyzeId:line58)" # debugcode
- local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
+test "$DebugFlag" = "1" && echo "debug: before awk at GetImId.(AnalyzeId:line58)" # debugcode
+	local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
 
 
- if [ -p /dev/stdin ]
- then
-  read UserId  < /dev/stdin
-test $DebugFlag -eq 1 && echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)" # debugcode
- else
-  UserId=$1
-test $DebugFlag -eq 1 && echo "debug: UserId is "$UserId"(at GetImId:line68)" # debugcode
- fi
+	if [ -p /dev/stdin ]
+	then
+		 read UserId < /dev/stdin
+test "$DebugFlag" = "1" && echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)" # debugcode
+echo "debug: UserId with pipe is "$UserId"(at GetImId:line65)" # debugcode
+	else
+		UserId=$1
+test "$DebugFlag" = "1" && echo "debug: UserId is "$UserId"(at GetImId:line68)" # debugcode
+	fi
+
+#echo "UserId is set to ";echo $UserId;echo " (at AnalyzeId,line73)" #debugcode
 
 #
 # User should be correct because only system call this function 
@@ -80,50 +88,54 @@ test $DebugFlag -eq 1 && echo "debug: UserId is "$UserId"(at GetImId:line68)" # 
 
 
 # 1. -o option output the response
- curl -s -d "token=${Token}" $ImListURL | python -mjson.tool > .data3 ## I'm not sure this make .data file.'cuz it's empty in .data
-test $DebugFlag -eq 1 && echo "debug; ImList's .data =";cat .data3 # debugcode
+	curl -s -d "token=${Token}" $ImListURL | python -mjson.tool > .data3 ## I'm not sure this make .data file.'cuz it's empty in .data
+test "$DebugFlag" = "1" && echo "debug; ImList's .data =";cat .data3 # debugcode
 # 2. 
- awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' .data3 > .data4   ## This awk semms to output ERROR that "can't read .data"
-# 3.
- if cat .data4 | grep ${UserId} > /dev/null
- then
-  :
- else
-  curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" $ImOpenURL | python -mjson.tool > .data3
-test $DebugFlag -eq 1 && echo "debug; ImList's second .data=";cat .data3 #debugcode
+	awk -v userid=$UserId -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4;if ( $4 == userid ) exit } ' .data3 > .data4   ## This awk semms to output ERROR that "can't read .data"
+	# 3.
+	#echo ".data4 is ";cat .data4;echo "(at Analyze,line90)" # debugcode
+	if cat .data4 | grep ${UserId} > /dev/null
+	then
+	#echo "got UserId in .data4 (at Analyze,line93)" # debugcode
+		:
+	else
+echo "UserId is ";echo $UserId;echo "(at AnalyzeId,line101)" # debugcode
+		 curl -s -d "token=${Token}" -d "user=${UserId}" -d "include_locale=true" $ImOpenURL | python -mjson.tool > .data3
+test "$DebugFlag" = "1" && echo "debug; ImList's second .data=";cat .data3 #debugcode
 
-  awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' .data3 > .data4
- fi 
-#4. remove .date file finally for security
- echo `tail -n 2 .data4 | head -n 1`
- rm .data3 .data4
- return 0
+		 awk -F "\"" ' /"id"/ { print $4 } /"user"/ { print $4 } ' .data3 > .data4
+	 fi 
+	#4. remove .date file finally for security
+	echo `tail -n 2 .data4 | head -n 1`
+	# rm .data3 .data4
+	return 0
 
 }
 
 
 
 function GetChannelId { 
- local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
- if [ $# -eq 0 ]
- then
-  local channelname=`awk -F "\"" ' /channel/ {print $4} ' $SlackerPath/.slackerconf`
- else
-  local channelname=$1;
- fi
+	local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
+	if [ $# -eq 0 ]
+	then
+		local channelname=`awk -F "\"" ' /channel/ {print $4} ' $SlackerPath/.slackerconf`
+	else
+		local channelname=$1;
+	fi
 
- curl -s -d "token=${Token}" $ChannelListURL | python -mjson.tool > .data
- awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' .data > .data2
+	curl -s -d "token=${Token}" $ChannelListURL | python -mjson.tool > .data
+	test "$DebugFlag" = "1" && echo "debug: GetChannelList's .data is  ";cat .data;echo " (at AnalyzeId,line118)" # debugcode
+	awk -v channelname=$channelname -F "\"" ' /"id"/ { print $4 } /"name"/ { print $4;if ( $4 == channelname ) exit} ' .data > .data2
 
- if cat .data2 | grep ${channelname} > /dev/null
- then
-   :
- else
-  echo $NoExistChannelName 1>&2
-  return $Error_NoExistChannelName
- fi
+	if cat .data2 | grep ${channelname} > /dev/null
+	then
+	  :
+	else
+		echo $NoExistChannelName 1>&2
+		return $Error_NoExistChannelName
+	fi
 
- echo `tail -n 2 .data2 | head -n 1` 
- rm .data .data2 
- return 0 
+	echo `tail -n 2 .data2 | head -n 1` 
+	rm .data .data2 
+	return 0 
 }
