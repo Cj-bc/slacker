@@ -7,7 +7,7 @@
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
 
-SlackerPath=/usr/local/Cellar/slacker/$Version
+SlackerPath=$HOMEBREW_PREFIX/Cellar/slacker/$Version
 #SlackerPath=.   # for debug
 # version 0.1.2.3
 
