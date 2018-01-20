@@ -6,10 +6,10 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
+#SlackerPath=.   # for debug
+# version 0.1.2.4
 
 SlackerPath=$HOMEBREW_PREFIX/Cellar/slacker/$Version
-#SlackerPath=.   # for debug
-# version 0.1.2.3
 
 # source textfiles,functions
 Version=0.1.2.3
