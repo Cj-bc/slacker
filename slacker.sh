@@ -6,13 +6,25 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-# version 0.1.1.8
 
-# source textfiles,functions
-Version=0.1.1.8
 SlackerPath=/usr/local/Cellar/slacker/$Version
 #SlackerPath=.   # for debug
+# version 0.1.2.3
+
+# source textfiles,functions
+Version=0.1.2.3
 shopt -s xpg_echo
+
+
+if [ "$1" = '--local' ] # just to make debug easier. for changing added before new version
+then
+	SlackerPath=.   # for debug
+	shift
+#echo "debug: args after --local shift -> ";echo $@;echo "(at slacker,line18)\n"  # debugcode
+else
+	SlackerPath=/usr/local/Cellar/slacker
+fi
+
 source $SlackerPath/.sourcefiles
 
 
