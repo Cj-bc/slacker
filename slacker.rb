@@ -1,5 +1,5 @@
 class Slacker < Formula
-  version = "0.1.1.7"
+  version = "0.1.1.8"
   desc "Allows to send slack messages from terminal"
   homepage "https://github.com/Cj-bc/slacker"
   url "https://github.com/Cj-bc/slacker/archive/v" + version + ".tar.gz"

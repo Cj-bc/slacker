@@ -10,7 +10,7 @@
 
 # Functions here are made for systemcall,not for usercall
 
-source texts/FunctionsTexts.sh   #All texts are in here.
+source $SlackerPath/texts/FunctionsTexts.sh   #All texts are in here.
 
 function settingconf {
 test "$DebugFlag" = "1"  && echo "debug: \$@ of settingconf is "$@"(at settingconf:line16)" # debugcode
