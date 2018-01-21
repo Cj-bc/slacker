@@ -49,6 +49,8 @@
  * Check whether token is avilable
  * Don't require initializing when it is upgraded
  * better user experiences ( guide for use )
+ * treat with heredocument
+ * shortcut for person/room's name(make alias)
 
 # problems I have  
  * What's the best grammer ??
