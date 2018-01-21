@@ -9,7 +9,6 @@
 #SlackerPath=.   # for debug
 # version 0.1.2.4
 
-SlackerPath=$HOMEBREW_PREFIX/Cellar/slacker/$Version
 
 # source textfiles,functions
 Version=0.1.2.3
@@ -22,7 +21,7 @@ then
 	shift
 #echo "debug: args after --local shift -> ";echo $@;echo "(at slacker,line18)\n"  # debugcode
 else
-	SlackerPath=/usr/local/Cellar/slacker
+	SlackerPath=$HOMEBREW_PREFIX/Cellar/slacker/$Version
 fi
 
 source $SlackerPath/.sourcefiles
