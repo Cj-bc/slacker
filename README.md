@@ -51,7 +51,8 @@
  * better user experiences ( guide for use )
  * treat with heredocument
  * shortcut for person/room's name(make alias)
-
+ * send space-letter( )
+ 
 # problems I have  
  * What's the best grammer ??
   ```shellscript:examples I'm thinking
