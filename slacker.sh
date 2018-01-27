@@ -12,6 +12,7 @@
 
 # source textfiles,functions
 Version=0.1.2.4
+HOMEBREW_PREFIX=`brew --prefix`
 shopt -s xpg_echo
 
 
