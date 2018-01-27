@@ -11,7 +11,7 @@
 
 
 # source textfiles,functions
-Version=0.1.2.3
+Version=0.1.2.4
 shopt -s xpg_echo
 
 
