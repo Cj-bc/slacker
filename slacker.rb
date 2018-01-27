@@ -13,7 +13,8 @@ class Slacker < Formula
 	  ohai "Renaming executable..."
 	  system "mv" "slacker.sh" "slacker" # Rename
 	  bin.install "slacker" # Install slacker
-	  prefix.install Dir[func] Dir[texts] # Install all texts and functions
+	  prefix.install Dir[func]
+	  prefix.install Dir[texts] # Install all texts and functions
  end
 
   test do
