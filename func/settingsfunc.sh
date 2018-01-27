@@ -63,6 +63,7 @@ function setup {
 		while [ $SuccessFlag -eq 0 ]
 		do  #---------------  Set Token
 			echo $AnnounceToGetToken
+			echo $AnnounceToSetToken
 			read -s Token; echo "\n"
 			if [ $Token = "" ]
 			then # failed (no input)
