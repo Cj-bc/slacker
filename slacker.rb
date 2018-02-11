@@ -1,5 +1,5 @@
 class Slacker < Formula
-  version = "0.1.2.6"
+  version = "0.1.2.7"
   desc "Allows to send slack messages from terminal"
   homepage "https://github.com/Cj-bc/homebrew-slacker"
   url "https://github.com/Cj-bc/homebrew-slacker/archive/v" + version + ".tar.gz"
@@ -11,7 +11,7 @@ class Slacker < Formula
 
  def install 
 	  ohai "Renaming executable..."
-	  system "mv " "slacker.sh " "slacker" # Rename
+	  system "mv" "slacker.sh" "slacker" # Rename
 	  bin.install "slacker" # Install slacker
 	  prefix.install Dir["func"], Dir["texts"], ".sourcefiles" # Install all texts and functions
  end
