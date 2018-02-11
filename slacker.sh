@@ -7,11 +7,11 @@
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
 #SlackerPath=.   # for debug
-# version 0.1.2.7
+# version 0.1.2.8
 
 
 # source textfiles,functions
-Version=0.1.2.7
+Version=0.1.2.8
 HOMEBREW_PREFIX=`brew --prefix`
 shopt -s xpg_echo
 
