@@ -42,7 +42,7 @@ echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 # text is Passed message. It's in $1 now.
 # as_user option is defined in $SlackerPath/.slackerconf
 # username option is defined in $SlackerPath/.slackerconf
- Message=$1
+ Message=$@
 
 
 # get http status code with -w '%{http_code}\n' option.
