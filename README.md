@@ -52,7 +52,9 @@
  * treat with heredocument
  * shortcut for person/room's name(make alias)
  * send space-letter( )
- 
+ * Check whether channel/user exist when we set them
+ * the way to see config
+ * enable to send message without selecting channel 
 # problems I have  
  * What's the best grammer ??
   ```shellscript:examples I'm thinking
