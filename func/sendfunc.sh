@@ -61,7 +61,7 @@ echo "debug: SendToId is  "$SendToId"(at send_main:line33)"
 
 # I needed this function to judge whether message has sent correctly.
 function send {
- if [ $# -eq 0 ] || [ $# -gt 2 ]
+ if [ $# -eq 0 ]
  then
   echo $Text_NotProperArguments
   return $Error_NotProperArguments
