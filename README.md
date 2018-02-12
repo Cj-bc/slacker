@@ -55,6 +55,7 @@
  * Check whether channel/user exist when we set them
  * the way to see config
  * enable to send message without selecting channel 
+ * multi workspaces
 # problems I have  
  * What's the best grammer ??
   ```shellscript:examples I'm thinking
