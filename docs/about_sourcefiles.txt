@@ -1,0 +1,7 @@
+
+  *sourcefiles*
+    |sourcefiles| contains all files to source
+    before main part start.
+
+==========================================
+Vim: set filetype=help:

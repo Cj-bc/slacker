@@ -1,0 +1,13 @@
+
+  *basicconf*
+      |basicconf| contains tokens for each workspaces.
+
+  *syntax*
+
+      <workspace_name>: <token>
+
+
+
+
+==========================================
+Vim: set filetype=help:
