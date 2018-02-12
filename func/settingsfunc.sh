@@ -69,7 +69,7 @@ function setup {
 			then # failed (no input)
 				echo $Text_NotProperArguments
 			else
-				echo " \"Token\": \"$Token\" " > $SlackerPath/.basicconf
+				echo " \"Token\": \"$Token\" " > $HOMEBREW_PREFIX/Cellar/slacker/.basicconf
 				SuccessFlag=1 # Set to 1, becaus of success
 			fi
 		done

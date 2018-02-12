@@ -6,12 +6,12 @@
 # 
 # This software is released under MIT License.
 # http://opensource.org/license/mit-license.php
-#SlackerPath=.   # for debug
-# version 0.1.3
+# SlackerPath=.   # for debug
+# version 0.1.3.1
 
 
 # source textfiles,functions
-Version=0.1.3
+Version=0.1.3.1
 HOMEBREW_PREFIX=`brew --prefix`
 shopt -s xpg_echo
 
@@ -37,7 +37,7 @@ fi
 
 
 # test wheather initialization is in need
-if [ "$1" = "init" ] || !  [ -f $SlackerPath/.basicconf ]
+if [ "$1" = "init" ] || !  [ -f $HOMEBREW_PREFIX/Cellar/slacker/.basicconf ]
 then
  echo "you need to setup your slacker first."
  setup first      #this is in settingfunc.sh file.

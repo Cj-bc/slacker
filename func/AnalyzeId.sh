@@ -9,7 +9,7 @@
 
 
 # Using files
-#  * $SlackerPath/.basicconf
+#  * $$HOMEBREW_PREFIX/Cellar/slacker/.basicconf
 #  * texts/FunctionsTexts.sh
 #  * texts/URLs.sh
 #  * texts/Error_Codes.sh
@@ -17,7 +17,7 @@
 
 function GetUserId {
 #echo "debug: before awk (at AnalyzeId,line19)" # debugcode
- local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
+ local Token=`awk -F "\"" ' /Token/ {print $4}' $$HOMEBREW_PREFIX/Cellar/slacker/.basicconf`
  UserName=$1
 #echo "debug: UserName = ";echo $UserName;echo " (at AnalyzeId,line21)" # debugcode
 
@@ -62,7 +62,7 @@ test "$DebugFlag" = "1"  && echo "debug: before awk at GetUserId (at AnalyzeId:l
 function GetImId {
 
 test "$DebugFlag" = "1" && echo "debug: before awk at GetImId.(AnalyzeId:line58)" # debugcode
-	local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
+	local Token=`awk -F "\"" ' /Token/ {print $4}' $HOMEBREW_PREFIX/Cellar/slacker/.asicconf`
 
 	if [ -p /dev/stdin ]
 	then
@@ -116,7 +116,7 @@ test "$DebugFlag" = "1" && echo "debug: ImList's second .data=";cat .data3 #debu
 
 
 function GetChannelId { 
-	local Token=`awk -F "\"" ' /Token/ {print $4}' $SlackerPath/.basicconf`
+	local Token=`awk -F "\"" ' /Token/ {print $4}' $HOMEBREW_PREFIX/Cellar/slacker/asicconf`
 	if [ $# -eq 0 ]
 	then
 		local channelname=`awk -F "\"" ' /channel/ {print $4} ' $SlackerPath/.slackerconf`
