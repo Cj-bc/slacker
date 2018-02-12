@@ -68,8 +68,22 @@ function setup {
 			if [ $Token = "" ]
 			then # failed (no input)
 				echo $Text_NotProperArguments
+        return $Error_NotProperArguments
 			else
-				echo " \"Token\": \"$Token\" " > $HOMEBREW_PREFIX/Cellar/slacker/.basicconf
+        http_status=`curl -X POST -d "token=${Token}" "https://slack.com/api/team.info" -s`  # check token and get workspace name
+          # error checking
+          ErrorCheckHTTP "$http_status"
+           if [ $? -eq 0 ]
+           then
+            ErrorCheckAPI "$http_status"
+            return $?
+           else
+            return $Error_HTTP
+           fi
+        # get workspace name
+       workspace=`cat $http_status | awk -F "\"" ' {printf $12} ' # got workspace name
+
+				echo $workspace" : "$Token > $HOMEBREW_PREFIX/Cellar/slacker/.basicconf
 				SuccessFlag=1 # Set to 1, becaus of success
 			fi
 		done
