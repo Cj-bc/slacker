@@ -1,0 +1,57 @@
+map                                         slacker                             2018/02/12
+                                                                                                                        
+                                                                                                  
+                                         < start >
+                                             |           
+                                             |                                                     
+                                        <set vars>                                              
+                                             |                                                     
+                                             | if --local                                                     
+                            true  |-----<------------>----| false                               
+                                  |                       |                                       
+                          <slackerPath = .>    <slackerPath = prefix/Cellar/slacker/version/> 
+                                  |                       |                                       
+                                  |-----------------------|                                       
+                                             |                                                    
+                                   <source .sourcefiles>                                                    
+                                             |                                                    
+                                             | if "--debug"                                      
+                                             |->---------->-| true                                    
+                                       false |              |                                     
+                                             |        <DebugFlag=1>                             
+                                             |              |                                     
+                                             |-<----------<-|                                     
+                                             |                                                    
+                                             | if "init" or no .basicconf                              
+                                             |->---------->-|                                     
+                                       false |              | true                                     
+                                             |              |                                      
+                                             |       |func/settingfunc|                                         
+                                             |           |setup| with "first"                                     
+                                             |              |                                     
+                                             |         <end safely>                             
+                                             |                                                    
+                                             | if no arg                                                    
+                                             |->---------->-|                                     
+                                       false |              | true                                     
+                                             |              |                                     
+                                             |       <show version>                             
+                                             |              |                                     
+                                             |          <end safely>                              
+                                             |                                                    
+                                             | if pipe was exist before                                                    
+                                             |->---------->-|                                     
+                                       false |              | true                                     
+                                             |        |func/sendfunc|                           
+                                             |            |send| with passed message                  
+                                             |                                                    
+                                             |                                                    
+                                             | if first arg is...                                 
+                     |-------------|-----------------|--------------------------------------|-------------------| 
+                     |             |                 |                                      |                   | 
+                     | "set"       | "send" or "s"   | "channel" or "c"                     | "help" or "h"     | other 
+                     |             |                 |                                      |                   |
+                |settingconf|  |send|           |settingconf| with channel    `man slacker` or |usage|    <output error>
+
+
+
