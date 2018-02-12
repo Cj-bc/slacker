@@ -1,0 +1,48 @@
+programmap                                        slacker                                     2018/02/12
+
+                                                |slacker.sh|
+                                                    |
+                                                    | detect options(set,send,channel,help,[config,switch]) [1]
+                                                    |
+                            |---------------------------------------------------|
+                            |                       |                           |
+                            |                       | if "set","channel"        | if "help"
+                       |----|                       |                           |
+                       |                     |func/settingfunc|         |func/commonfunc|
+                       |                            |                           |
+                       |                            | "init"?                |usage|
+                       |                      |--<------->----|          
+                       |                      | true          | false    
+                       |                      |               |          
+                       |                    |setup|      |settingconf|   
+                       |                      |               |          
+                       |                    |ErrorCheckHTTP|  |          
+                       |                    |ErrorCheckAPI|   |          
+                       |                      |               |          
+                       |                      | data          | data 
+                       |                      |-->------| |-<-|      
+                       |                      |         |-|          
+                       |                      |           |     
+                       |                      |           |   as_user,channel,bot_name    ===================         
+                       |                      |           |------------------------->-----==               ==
+                       |                      |                                           == |slackerconf| ==   
+                       |  if "send"           |                                           ==               ==
+                       |                      |                                           ===================
+                 |func/sendfunc|              |                                                        |
+                       |                      |   token,workspace_name            =================    |
+                       |                      |----------------------------->-----==             ==    |
+                       |      token,workspace_name                                == |basicconf| ==    |
+                       |---<---------------------------------------------------<--==             ==    |
+                       |          channel,as_user,bot_name                        =================    |
+                       |---<-------------------------------------------------------------------------<-|
+                       |
+                       | curl,etc
+                       |
+               |func/Errorfunc|
+                  |ErrorHTTP|
+                   |ErrorAPI|
+
+
+
+==================================-
+[1] "config" and "switch" option of slacker.sh will be added later. "config" might replace "setting"
