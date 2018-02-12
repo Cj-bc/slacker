@@ -23,6 +23,7 @@
  * im:write
  * users:read
  * users:write
+ * team:read
 
 # Needed commands
  * python -mjson.tool
