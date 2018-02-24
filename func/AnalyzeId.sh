@@ -108,7 +108,7 @@ test "$DebugFlag" = "1" && echo "debug: ImList's second .data=";cat .data3 #debu
 	 fi 
 	#4. remove .date file finally for security
 	echo `tail -n 2 .data4 | head -n 1`
-	# rm .data3 .data4
+	rm .data3 .data4
 	return 0
 
 }
