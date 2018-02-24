@@ -81,7 +81,7 @@ function setup {
             return $Error_HTTP
            fi
         # get workspace name
-       workspace=`cat $http_status | awk -F "\"" ' {printf $12} ' # got workspace name
+       workspace=`cat $http_status | awk -F "\"" ' {printf $12} '` # got workspace name
 
 				echo $workspace" : "$Token > $HOMEBREW_PREFIX/Cellar/slacker/.basicconf
 				SuccessFlag=1 # Set to 1, becaus of success
