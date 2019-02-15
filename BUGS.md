@@ -17,3 +17,6 @@ usage: grep [-abcDEFGHhIiJLlmnOoqRSsUVvwxZ] [-A num] [-B num] [-C[num]]
 debug: SendToId is  { "error": "not_authed", "ok": false }(at send_main:line33)
 API_Error: channel_not_found
 Failed to send message.
+
+
+ * leave .data and .data2 at current directory
